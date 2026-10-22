@@ -2,37 +2,75 @@
 <html>
 <head>
   <title>Aaron Pena</title>
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; background:#0d0d0d; color:#fff; }
+    header {
+      padding:120px 20px; text-align:center;
+      background:linear-gradient(135deg,#ff416c,#ff4b2b,#8e2de2);
+      background-size:300% 300%;
+      animation:shift 8s ease infinite;
+    }
+    @keyframes shift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    header h1 { font-size:72px; margin:0; letter-spacing:6px; text-shadow:0 4px 20px rgba(0,0,0,.5); }
+    header p { font-size:22px; margin-top:12px; opacity:.9; }
+    main { max-width:1000px; margin:0 auto; padding:50px 20px; }
+    h2 {
+      font-size:32px; text-transform:uppercase; letter-spacing:3px;
+      border-bottom:3px solid #ff4b2b; padding-bottom:10px; margin-top:80px;
+    }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .grid img {
+      width:100%; border-radius:16px; display:block;
+      transition:transform .3s ease, box-shadow .3s ease;
+    }
+    .grid img:hover { transform:scale(1.03); box-shadow:0 10px 30px rgba(255,75,43,.4); }
+    .grid p { margin-top:10px; opacity:.75; font-weight:bold; text-align:center; }
+    .section-text { margin-top:20px; font-size:17px; line-height:1.6; opacity:.85; }
+    .card {
+      background:#1a1a1a; border-radius:16px; padding:24px; margin-top:20px;
+      border:1px solid #333;
+    }
+    .card:hover { border-color:#ff4b2b; }
+    footer { text-align:center; padding:60px 20px; opacity:.6; }
+    a { color:#ff4b2b; }
+  </style>
 </head>
-<body style="margin:0; font-family: Arial, sans-serif; background:#111; color:#fff;">
+<body>
 
-  <header style="padding:100px 20px; text-align:center; background:linear-gradient(135deg,#ff416c,#ff4b2b);">
-    <h1 style="font-size:64px; margin:0;">AARON PENA</h1>
-    <p style="font-size:22px; margin-top:10px;">Engineering intern · creator · curious mind</p>
+  <header>
+    <h1>AARON PENA</h1>
+    <p>Engineering intern · creator · curious mind</p>
   </header>
 
-  <main style="max-width:900px; margin:0 auto; padding:40px 20px;">
+  <main>
+    <h2>Sports</h2>
+    <div class="grid">
+      <div><img src="messi.jpg" alt="Lionel Messi"><p>Lionel Messi</p></div>
+      <div><img src="ilia.jpg" alt="Ilia Topuria"><p>Ilia Topuria</p></div>
+    </div>
+    <p class="section-text">My two favorite athletes — heavily regarded as the best in the world, and they always remind me to push myself through the limits.</p>
 
-    <h2 style="border-bottom:3px solid #ff4b2b; padding-bottom:8px;">Sports</h2>
-    <img src="messi.jpg" alt="Lionel Messi" style="width:100%; border-radius:16px;">
-    <img src="ilia.jpg" alt="Ilia Topuria" style="width:100%; border-radius:16px; margin-top:20px;">
-    <p>These are my two favorite athletes. They are heavily regarded as the best in the world by many and always remind me to push myself through the limits.</p>
+    <h2>Music</h2>
+    <div class="grid">
+      <div><img src="lucki.png" alt="Days B4 III by Lucki"><p>Days B4 III — Lucki</p></div>
+      <div><img src="carti.jpg" alt="Die Lit by Playboi Carti"><p>Die Lit — Playboi Carti</p></div>
+    </div>
+    <p class="section-text">My two favorite artists and my favorite albums by them. I always have some headphones plugged in regardless of the occasion.</p>
 
-    <h2 style="border-bottom:3px solid #ff4b2b; padding-bottom:8px; margin-top:60px;">Music</h2>
-    <img src="lucki.png" alt="Days B4 III by Lucki" style="width:100%; border-radius:16px;">
-    <img src="carti.jpg" alt="Die Lit by Playobi Carti" style="width:100%; border-radius:16px; margin-top:20px;">
-    <p>Here are my two favorite artists and my faovrite albums by them. I always have some headphones plugged in regardless of the occasion.</p>
+    <h2>Hobbies</h2>
+    <div class="grid">
+      <div><img src="fifa.webp" alt="FC 27"><p>FC 27</p></div>
+      <div><img src="jjk.jpg" alt="Jujutsu Kaisen"><p>Jujutsu Kaisen</p></div>
+    </div>
+    <p class="section-text">The game I play the most, along with one of the few shows I'm into. The game gets infuriating at moments, but they're some nice things I enjoy.</p>
 
-    <h2 style="border-bottom:3px solid #ff4b2b; padding-bottom:8px; margin-top:60px;">Hobbies</h2>
-    <img src="fifa.webp" alt="FC 27" style="width:100%; border-radius:16px;">
-    <img src="jjk.jpg" alt="Jujutsu Kaisen" style="width:100%; border-radius:16px; margin-top:20px;">
-    <p>Here is the game I play the most along with a show. I'm not really into much shows, and the game kind of gets infuriating at moments, but they are some nice things I enjoy.</p>
+    <h2>Projects</h2>
+    <div class="card">
+      <strong>My own portfolio website</strong>
+      <p>Built from scratch with HTML and CSS — deployed on GitHub Pages.</p>
+    </div>
 
-    <h2 style="margin-top:60px;">Projects</h2>
-    <ul>
-      <li>Project one — My own portfolio website</li>
-    </ul>
-
-    <p style="margin-top:60px;">Email me at aaron.pena@stninc.com</p>
+    <footer>Email me at <a href="mailto:aaron.pena@stninc.com">aaron.pena@stninc.com</a></footer>
   </main>
 
 </body>
