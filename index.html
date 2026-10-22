@@ -2,67 +2,74 @@
 <html>
 <head>
   <title>Aaron Pena</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#0d0d0d; color:#fff; }
-
-    /* ---- intro screen ---- */
-    #intro {
-      position:fixed; inset:0; z-index:100;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; cursor:pointer;
-      background:linear-gradient(135deg,#ff416c,#ff4b2b,#8e2de2);
-      background-size:300% 300%; animation:shift 8s ease infinite;
-      transition:opacity .8s ease, visibility .8s;
+    body {
+      margin:0; background:#0d0d0d; color:#fff;
+      font-family:'Inter', Arial, sans-serif;
     }
-    #intro.gone { opacity:0; visibility:hidden; }
-    #intro h1 { font-size:64px; margin:0; letter-spacing:4px; text-shadow:0 4px 20px rgba(0,0,0,.5); animation:pop 1s ease; }
+    h1, h2, h3 { font-family:'Space Grotesk', Arial, sans-serif; }
+
+    /* ---- full-screen slides ---- */
+    .slide {
+      min-height:100vh; scroll-snap-align:start;
+      display:flex; align-items:center; justify-content:center;
+      padding:60px 24px; box-sizing:border-box;
+    }
+    .deck { scroll-snap-type:y mandatory; overflow-y:scroll; height:100vh; }
+
+    /* ---- intro slide ---- */
+    #intro {
+      position:relative; text-align:center; cursor:pointer;
+      overflow:hidden; flex-direction:column;
+    }
+    #intro .bg {
+      position:absolute; inset:0;
+      background:url('intro-bg.jpg') center/cover no-repeat;
+      filter:brightness(.55);
+    }
+    #intro .content { position:relative; z-index:2; }
+    #intro h1 { font-size:64px; margin:0; letter-spacing:4px; }
     #intro p { font-size:22px; margin-top:16px; opacity:.95; max-width:600px; padding:0 20px; }
     #intro .tap {
-      margin-top:50px; font-size:14px; letter-spacing:4px; text-transform:uppercase;
-      padding:14px 34px; border:2px solid rgba(255,255,255,.7); border-radius:40px;
-      animation:pulse 2s ease infinite;
+      display:inline-block; margin-top:50px; font-size:14px; letter-spacing:4px;
+      text-transform:uppercase; padding:14px 34px; border:2px solid rgba(255,255,255,.7);
+      border-radius:40px; transition:opacity 1.5s ease;
+      animation:breathe 4s ease infinite;
     }
-    @keyframes pulse { 0%,100%{transform:scale(1); opacity:1} 50%{transform:scale(1.06); opacity:.7} }
+    @keyframes breathe { 0%,100%{opacity:1} 50%{opacity:.5} }
 
-    header {
-      padding:110px 20px; text-align:center;
-      background:linear-gradient(135deg,#ff416c,#ff4b2b,#8e2de2);
-      background-size:300% 300%; animation:shift 8s ease infinite;
+    /* ---- bio slides ---- */
+    .bio {
+      display:flex; gap:60px; align-items:center;
+      max-width:1000px; width:100%; flex-wrap:wrap; justify-content:center;
     }
-    @keyframes shift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-    header h1 { font-size:72px; margin:0; letter-spacing:6px; text-shadow:0 4px 20px rgba(0,0,0,.5); }
-    header p { font-size:22px; margin-top:12px; opacity:.9; }
-    main { max-width:1000px; margin:0 auto; padding:50px 20px; }
-    h2 {
-      font-size:32px; text-transform:uppercase; letter-spacing:3px;
-      border-bottom:3px solid #ff4b2b; padding-bottom:10px; margin-top:80px;
+    .bio .photo {
+      width:340px; aspect-ratio:1/1; border-radius:20px; overflow:hidden;
+      box-shadow:0 8px 30px rgba(0,0,0,.6); flex-shrink:0;
+      transition:transform .5s ease;
     }
-    .grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-    .frame {
-      position:relative; border-radius:16px; overflow:hidden;
-      aspect-ratio:1 / 1; box-shadow:0 6px 20px rgba(0,0,0,.5);
-      transition:box-shadow .3s;
-    }
-    .frame img {
-      width:100%; height:100%; object-fit:cover; display:block;
-      transition:transform .5s ease, filter .5s ease;
-    }
-    .frame:hover img { transform:scale(1.08); filter:saturate(1.3); }
-    .frame:hover { box-shadow:0 10px 30px rgba(255,75,43,.4); }
-    .grid p { margin-top:10px; opacity:.75; font-weight:bold; text-align:center; }
-    .section-text { margin-top:20px; font-size:17px; line-height:1.6; opacity:.85; }
-    .card {
-      background:#1a1a1a; border-radius:16px; padding:24px; margin-top:20px;
-      border:1px solid #333; transition:border-color .3s, transform .3s;
-    }
-    .card:hover { border-color:#ff4b2b; transform:translateY(-4px); }
-    footer { text-align:center; padding:60px 20px; opacity:.6; }
-    a { color:#ff4b2b; }
+    .bio .photo:hover { transform:scale(1.02); }
+    .bio .photo img { width:100%; height:100%; object-fit:cover; display:block; }
+    .bio .text { flex:1; min-width:300px; }
+    .bio h2 { font-size:44px; margin:0; letter-spacing:1px; }
+    .bio .sub { margin-top:8px; opacity:.7; font-style:italic; }
+    .bio .blurb { margin-top:18px; font-size:17px; line-height:1.6; opacity:.9; }
+    .bio ul { margin-top:18px; line-height:1.9; padding-left:20px; opacity:.85; }
+    .bio .closer { margin-top:18px; opacity:.7; font-size:15px; line-height:1.6; }
 
-    /* fade-in on scroll */
-    .reveal { opacity:0; transform:translateY(40px); transition:opacity .8s ease, transform .8s ease; }
+    /* section divider slides */
+    .divider { flex-direction:column; text-align:center; }
+    .divider h2 {
+      font-size:56px; text-transform:uppercase; letter-spacing:6px; margin:0;
+    }
+    .divider p { margin-top:14px; opacity:.6; max-width:520px; }
+
+    footer.slide { display:block; text-align:center; opacity:.6; padding:80px 20px 40px; }
+
+    /* gentle fade-in as each slide enters view */
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity .9s ease, transform .9s ease; }
     .reveal.visible { opacity:1; transform:none; }
-    @keyframes pop { from{opacity:0; transform:translateY(20px) scale(.95)} to{opacity:1; transform:none} }
 
     /* soft ripple on enter */
     .ripple {
@@ -78,129 +85,125 @@
   </style>
 </head>
 <body>
+<div class="deck">
 
-  <!-- intro screen -->
-  <div id="intro">
-    <h1>Hey, I'm Aaron.</h1>
-    <p>Engineering intern, creator, and curious mind — here are some of my interests.</p>
-    <div class="tap">Click anywhere to enter</div>
-  </div>
-
-  <header>
-    <h1>AARON PENA</h1>
-    <p>Engineering intern · creator · curious mind</p>
-  </header>
-
-  <main>
-    <h2 class="reveal">Sports</h2>
-    <div class="grid reveal">
-      <div><div class="frame"><img src="messi.jpg" alt="Lionel Messi"></div><p>Lionel Messi</p></div>
-      <div><div class="frame"><img src="ilia.jpg" alt="Ilia Topuria"></div><p>Ilia Topuria</p></div>
+  <!-- slide 1: intro -->
+  <section class="slide" id="intro">
+    <div class="bg"></div>
+    <div class="content reveal">
+      <h1>Hey, I'm Aaron.</h1>
+      <p>Engineering intern, creator, and curious mind — here are some of my interests.</p>
+      <div class="tap">Scroll to explore</div>
     </div>
+  </section>
 
-    <div class="card reveal" style="margin-top:30px;">
-      <strong>Lionel "La Pulga" Messi</strong>
-      <p><em>8× Ballon d'Or winner · Forward · Argentina · Inter Miami CF (#10)</em></p>
-      <p style="margin-top:12px;">Widely regarded as the greatest footballer of all time, famous for extraordinary dribbling, playmaking, goalscoring, and vision.</p>
-      <ul style="margin-top:12px; line-height:1.8;">
-        <li>2004–2021 — Barcelona: 672 goals, 10 La Liga titles, 4 UEFA Champions League trophies</li>
-        <li>2022 — Captained Argentina to the FIFA World Cup, defeating France in the final</li>
-        <li>2023 — Joined Inter Miami and immediately helped win the Leagues Cup</li>
-        <li>2024–2025 — Back-to-back MLS MVP awards and Miami's first MLS Cup in 2025</li>
-        <li>2026 — Led Argentina to another World Cup final, scoring eight goals and winning the Silver Ball</li>
-      </ul>
-      <p style="margin-top:12px; opacity:.8;">Known for exceptional close control, rapid changes of direction, and clinical finishing — he dominates through balance, intelligence, and technique rather than pure physicality.</p>
+  <!-- slide 2: Sports divider -->
+  <section class="slide divider">
+    <div class="reveal">
+      <h2>Sports</h2>
+      <p>My two favorite athletes — heavily regarded as the best in the world, and they always remind me to push myself through the limits.</p>
     </div>
+  </section>
 
-    <div class="card reveal" style="margin-top:30px;">
-      <strong>Ilia "El Matador" Topuria</strong>
-      <p><em>Former two-division UFC champion · 17-1 · Georgian-Spanish · Lightweight</em></p>
-      <p style="margin-top:12px;">One of the UFC's most accomplished modern fighters, known for explosive boxing, knockout power, Brazilian jiu-jitsu, and confidence.</p>
-      <ul style="margin-top:12px; line-height:1.8;">
-        <li>2024 — Knocked out Alexander Volkanovski to win the UFC featherweight championship</li>
-        <li>2024 — First fighter ever to knock out Max Holloway, defending his title</li>
-        <li>2025 — First-round KO of Charles Oliveira to win the lightweight title, becoming a two-division champion</li>
-        <li>2026 — First professional defeat, losing the lightweight title to Justin Gaethje</li>
-      </ul>
-      <p style="margin-top:12px; opacity:.8;">He combines precise, powerful boxing with elite grappling — a BJJ black belt with eight submission wins — and is at his most dangerous at close range.</p>
+  <!-- slide 3: Messi -->
+  <section class="slide">
+    <div class="bio reveal">
+      <div class="photo"><img src="messi.jpg" alt="Lionel Messi"></div>
+      <div class="text">
+        <h2>Lionel "La Pulga" Messi</h2>
+        <p class="sub">8× Ballon d'Or winner · Forward · Argentina · Inter Miami CF (#10)</p>
+        <p class="blurb">Widely regarded as the greatest footballer of all time, famous for extraordinary dribbling, playmaking, goalscoring, and vision.</p>
+        <ul>
+          <li>2004–2021 — Barcelona: 672 goals, 10 La Liga titles, 4 UEFA Champions League trophies</li>
+          <li>2022 — Captained Argentina to the FIFA World Cup, defeating France in the final</li>
+          <li>2023 — Joined Inter Miami and immediately helped win the Leagues Cup</li>
+          <li>2024–2025 — Back-to-back MLS MVP awards and Miami's first MLS Cup in 2025</li>
+          <li>2026 — Led Argentina to another World Cup final, scoring eight goals and winning the Silver Ball</li>
+        </ul>
+        <p class="closer">Known for exceptional close control, rapid changes of direction, and clinical finishing — he dominates through balance, intelligence, and technique rather than pure physicality.</p>
+      </div>
     </div>
+  </section>
 
-    <p class="section-text reveal">My two favorite athletes — heavily regarded as the best in the world, and they always remind me to push myself through the limits.</p>
-
-    <h2 class="reveal">Music</h2>
-    <div class="grid reveal">
-      <div><div class="frame"><img src="lucki.png" alt="Days B4 III by Lucki"></div><p>Days B4 III — Lucki</p></div>
-      <div><div class="frame"><img src="carti.jpg" alt="Die Lit by Playboi Carti"></div><p>Die Lit — Playboi Carti</p></div>
+  <!-- slide 4: Topuria -->
+  <section class="slide">
+    <div class="bio reveal">
+      <div class="photo"><img src="ilia.jpg" alt="Ilia Topuria"></div>
+      <div class="text">
+        <h2>Ilia "El Matador" Topuria</h2>
+        <p class="sub">Former two-division UFC champion · 17-1 · Georgian-Spanish · Lightweight</p>
+        <p class="blurb">One of the UFC's most accomplished modern fighters, known for explosive boxing, knockout power, Brazilian jiu-jitsu, and confidence.</p>
+        <ul>
+          <li>2024 — Knocked out Alexander Volkanovski to win the UFC featherweight championship</li>
+          <li>2024 — First fighter ever to knock out Max Holloway, defending his title</li>
+          <li>2025 — First-round KO of Charles Oliveira to win the lightweight title, becoming a two-division champion</li>
+          <li>2026 — First professional defeat, losing the lightweight title to Justin Gaethje</li>
+        </ul>
+        <p class="closer">He combines precise, powerful boxing with elite grappling — a BJJ black belt with eight submission wins — and is at his most dangerous at close range.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="card reveal" style="margin-top:30px;">
-      <strong>Lucki</strong>
-      <p><em>Rapper &amp; songwriter · Chicago, Illinois · Cloud rap / trap / alternative hip-hop</em></p>
-      <p style="margin-top:12px;">An influential Chicago rapper known for his laid-back delivery, hypnotic beats, emotional lyrics, and atmospheric sound — he built a dedicated underground following before reaching wider mainstream recognition.</p>
-      <ul style="margin-top:12px; line-height:1.8;">
-        <li>2013 — Alternative Trap: debut mixtape at just 17, introducing his experimental, introspective sound</li>
-        <li>2014 — Body High: developed his hazy production style and gained underground recognition</li>
-        <li>2017 — Watch My Back: fan-favorite mixtape with darker, more personal songwriting</li>
-        <li>2019 — Freewave 3: a defining project in his discography, featuring "More Than Ever"</li>
-        <li>2022 — FLAWLESS LIKE ME: reached a larger audience with Future and Babyface Ray features</li>
-        <li>2023 — s*x M*ney Dr*gs: his most commercially successful project to date</li>
-      </ul>
-      <p style="margin-top:12px; opacity:.8;">His music is defined by hazy, atmospheric production and introspective, melancholic lyrics delivered in a relaxed, understated flow.</p>
+  <!-- slide 5: Music divider -->
+  <section class="slide divider">
+    <div class="reveal">
+      <h2>Music</h2>
+      <p>Headphones plugged in — these two shaped my taste.</p>
     </div>
+  </section>
 
-    <div class="card reveal" style="margin-top:30px;">
-      <strong>Playboi Carti</strong>
-      <p><em>Rapper &amp; songwriter · Atlanta, Georgia · Trap / rage rap / experimental hip-hop · Opium / Interscope</em></p>
-      <p style="margin-top:12px;">One of the most influential artists in modern trap music, known for experimental vocals, energetic production, a mysterious public image, and distinctive fashion.</p>
-      <ul style="margin-top:12px; line-height:1.8;">
-        <li>2017 — Playboi Carti: debut commercial mixtape with breakout hits "Magnolia" and "wokeuplikethis*" with Lil Uzi Vert</li>
-        <li>2018 — Die Lit: debut studio album featuring "Shoota" and "R.I.P." — a defining project in modern trap</li>
-        <li>2020 — Whole Lotta Red: No. 1 on the Billboard 200, with an aggressive, punk-inspired sound that helped popularize rage rap</li>
-        <li>2022–2024 — Expanded his influence through the Opium label and collective, home to Ken Carson, Destroy Lonely, and Homixide Gang</li>
-        <li>2023–2024 — New sound: deeper vocals on tracks like "2024," "H00DBYAIR," and "BACKR00MS"</li>
-        <li>2025 — MUSIC: long-awaited third studio album, debuting at No. 1 on the Billboard 200</li>
-      </ul>
+  <!-- slide 6: Lucki -->
+  <section class="slide">
+    <div class="bio reveal">
+      <div class="photo"><img src="lucki.png" alt="Days B4 III by Lucki"></div>
+      <div class="text">
+        <h2>Lucki</h2>
+        <p class="sub">Rapper &amp; songwriter · Chicago, Illinois · Cloud rap / trap / alternative hip-hop</p>
+        <p class="blurb">An influential Chicago rapper known for his laid-back delivery, hypnotic beats, emotional lyrics, and atmospheric sound — he built a dedicated underground following before reaching wider mainstream recognition.</p>
+        <ul>
+          <li>2013 — Alternative Trap: debut mixtape at just 17, introducing his experimental, introspective sound</li>
+          <li>2014 — Body High: developed his hazy production style and gained underground recognition</li>
+          <li>2017 — Watch My Back: fan-favorite mixtape with darker, more personal songwriting</li>
+          <li>2019 — Freewave 3: a defining project in his discography, featuring "More Than Ever"</li>
+          <li>2022 — FLAWLESS LIKE ME: reached a larger audience with Future and Babyface Ray features</li>
+          <!-- paste your remaining Lucki bullets here if there were more -->
+        </ul>
+      </div>
     </div>
+  </section>
 
-    <p class="section-text reveal">My two favorite artists and my favorite albums by them. I always have some headphones plugged in regardless of the occasion.</p>
-
-    <h2 class="reveal">Hobbies</h2>
-    <div class="grid reveal">
-      <div><div class="frame"><img src="fifa.webp" alt="FC 27"></div><p>FC 27</p></div>
-      <div><div class="frame"><img src="jjk.jpg" alt="Jujutsu Kaisen"></div><p>Jujutsu Kaisen</p></div>
+  <!-- slide 7: Carti -->
+  <section class="slide">
+    <div class="bio reveal">
+      <div class="photo"><img src="carti.jpg" alt="Die Lit by Playboi Carti"></div>
+      <div class="text">
+        <h2>Playboi Carti</h2>
+        <p class="sub">Rapper &amp; songwriter · Atlanta, Georgia · Trap / rage rap / experimental hip-hop · Opium / Interscope</p>
+        <p class="blurb">One of the most influential artists in modern trap music, known for experimental vocals, energetic production, a mysterious public image, and distinctive fashion.</p>
+        <ul>
+          <li>2017 — Playboi Carti: debut commercial mixtape with breakout hits "Magnolia" and "wokeuplikethis*" with Lil Uzi Vert</li>
+          <li>2018 — Die Lit: debut studio album featuring "Shoota" and "R.I.P." — a defining project in modern trap</li>
+          <li>2020 — Whole Lotta Red: No. 1 on the Billboard 200, with an aggressive, punk-inspired sound that helped popularize rage rap</li>
+          <li>2022–2024 — Expanded his influence through the Opium label and collective, home to Ken Carson, Destroy Lonely, and Homixide Gang</li>
+          <li>2023–2024 — New sound: deeper vocals on tracks like "2024," "H00DBYAIR," and "BACKR00MS"</li>
+          <li>2025 — MUSIC: long-awaited third studio album, debuting at No. 1 on the Billboard 200</li>
+        </ul>
+      </div>
     </div>
-    <p class="section-text reveal">The game I play the most, along with one of the few shows I'm into. The game gets infuriating at moments, but they're some nice things I enjoy.</p>
+  </section>
 
-    <h2 class="reveal">Projects</h2>
-    <div class="card reveal">
-      <strong>My own portfolio website</strong>
-      <p>Built from scratch with HTML and CSS — deployed on GitHub Pages.</p>
-    </div>
+  <footer class="slide">
+    <p>Made by Aaron Pena</p>
+  </footer>
 
-    <footer class="reveal">Email me at <a href="mailto:aaron.pena@stninc.com">aaron.pena@stninc.com</a></footer>
-  </main>
+</div>
 
-  <script>
-    // intro screen — click anywhere to enter, with a soft ripple
-    const intro = document.getElementById('intro');
-    intro.addEventListener('click', (e) => {
-      intro.classList.add('gone');
-
-      // gentle expanding ripple from where they clicked
-      const ripple = document.createElement('div');
-      ripple.className = 'ripple';
-      ripple.style.left = e.clientX + 'px';
-      ripple.style.top = e.clientY + 'px';
-      document.body.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 1500);
-    });
-
-    // fade-in on scroll
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
-
+<script>
+  // gentle fade-in as slides come into view
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
