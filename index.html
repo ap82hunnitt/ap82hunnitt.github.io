@@ -4,15 +4,33 @@
   <title>Aaron Pena</title>
   <style>
     body { margin:0; font-family: Arial, sans-serif; background:#0d0d0d; color:#fff; }
-    header {
-      padding:120px 20px; text-align:center;
+
+    /* ---- intro screen ---- */
+    #intro {
+      position:fixed; inset:0; z-index:100;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; cursor:pointer;
       background:linear-gradient(135deg,#ff416c,#ff4b2b,#8e2de2);
-      background-size:300% 300%;
-      animation:shift 8s ease infinite;
+      background-size:300% 300%; animation:shift 8s ease infinite;
+      transition:opacity .8s ease, visibility .8s;
+    }
+    #intro.gone { opacity:0; visibility:hidden; }
+    #intro h1 { font-size:64px; margin:0; letter-spacing:4px; text-shadow:0 4px 20px rgba(0,0,0,.5); animation:pop 1s ease; }
+    #intro p { font-size:22px; margin-top:16px; opacity:.95; max-width:600px; padding:0 20px; }
+    #intro .tap {
+      margin-top:50px; font-size:14px; letter-spacing:4px; text-transform:uppercase;
+      padding:14px 34px; border:2px solid rgba(255,255,255,.7); border-radius:40px;
+      animation:pulse 2s ease infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1); opacity:1} 50%{transform:scale(1.06); opacity:.7} }
+
+    header {
+      padding:110px 20px; text-align:center;
+      background:linear-gradient(135deg,#ff416c,#ff4b2b,#8e2de2);
+      background-size:300% 300%; animation:shift 8s ease infinite;
     }
     @keyframes shift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-    header h1 { font-size:72px; margin:0; letter-spacing:6px; text-shadow:0 4px 20px rgba(0,0,0,.5); animation:pop 1s ease; }
-    @keyframes pop { from{opacity:0; transform:translateY(20px) scale(.95)} to{opacity:1; transform:none} }
+    header h1 { font-size:72px; margin:0; letter-spacing:6px; text-shadow:0 4px 20px rgba(0,0,0,.5); }
     header p { font-size:22px; margin-top:12px; opacity:.9; }
     main { max-width:1000px; margin:0 auto; padding:50px 20px; }
     h2 {
@@ -22,8 +40,8 @@
     .grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
     .frame {
       position:relative; border-radius:16px; overflow:hidden;
-      aspect-ratio:1 / 1;
-      box-shadow:0 6px 20px rgba(0,0,0,.5);
+      aspect-ratio:1 / 1; box-shadow:0 6px 20px rgba(0,0,0,.5);
+      transition:box-shadow .3s;
     }
     .frame img {
       width:100%; height:100%; object-fit:cover; display:block;
@@ -44,9 +62,24 @@
     /* fade-in on scroll */
     .reveal { opacity:0; transform:translateY(40px); transition:opacity .8s ease, transform .8s ease; }
     .reveal.visible { opacity:1; transform:none; }
+    @keyframes pop { from{opacity:0; transform:translateY(20px) scale(.95)} to{opacity:1; transform:none} }
+
+    /* confetti on enter */
+    .spark {
+      position:fixed; width:10px; height:10px; z-index:99; pointer-events:none;
+      animation:fall 1.6s ease-in forwards;
+    }
+    @keyframes fall { to { transform:translateY(105vh) rotate(720deg); opacity:0; } }
   </style>
 </head>
 <body>
+
+  <!-- intro screen -->
+  <div id="intro">
+    <h1>Hey, I'm Aaron.</h1>
+    <p>Engineering intern, creator, and curious mind — here are some of my interests.</p>
+    <div class="tap">Click anywhere to enter</div>
+  </div>
 
   <header>
     <h1>AARON PENA</h1>
@@ -59,6 +92,9 @@
       <div><div class="frame"><img src="messi.jpg" alt="Lionel Messi"></div><p>Lionel Messi</p></div>
       <div><div class="frame"><img src="ilia.jpg" alt="Ilia Topuria"></div><p>Ilia Topuria</p></div>
     </div>
+
+    <!-- paste your existing Messi + Topuria bio cards here -->
+
     <p class="section-text reveal">My two favorite athletes — heavily regarded as the best in the world, and they always remind me to push myself through the limits.</p>
 
     <h2 class="reveal">Music</h2>
@@ -66,6 +102,9 @@
       <div><div class="frame"><img src="lucki.png" alt="Days B4 III by Lucki"></div><p>Days B4 III — Lucki</p></div>
       <div><div class="frame"><img src="carti.jpg" alt="Die Lit by Playboi Carti"></div><p>Die Lit — Playboi Carti</p></div>
     </div>
+
+    <!-- paste your existing Lucki + Carti bio cards here -->
+
     <p class="section-text reveal">My two favorite artists and my favorite albums by them. I always have some headphones plugged in regardless of the occasion.</p>
 
     <h2 class="reveal">Hobbies</h2>
@@ -81,10 +120,28 @@
       <p>Built from scratch with HTML and CSS — deployed on GitHub Pages.</p>
     </div>
 
-    <footer class="reveal">Email me at <a href="mailto:aaron.pena412009@gmail.com">aaron.pena412009@gmail.com</a></footer>
+    <footer class="reveal">Email me at <a href="mailto:aaron.pena@stninc.com">aaron.pena@stninc.com</a></footer>
   </main>
 
   <script>
+    // intro screen — click anywhere to enter, with confetti
+    const intro = document.getElementById('intro');
+    intro.addEventListener('click', () => {
+      intro.classList.add('gone');
+      const colors = ['#ff416c','#ff4b2b','#8e2de2','#ffffff'];
+      for (let i = 0; i < 40; i++) {
+        const s = document.createElement('div');
+        s.className = 'spark';
+        s.style.left = Math.random() * 100 + 'vw';
+        s.style.top = '-20px';
+        s.style.background = colors[i % colors.length];
+        s.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 1700);
+      }
+    });
+
+    // fade-in on scroll
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.15 });
