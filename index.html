@@ -64,12 +64,17 @@
     .reveal.visible { opacity:1; transform:none; }
     @keyframes pop { from{opacity:0; transform:translateY(20px) scale(.95)} to{opacity:1; transform:none} }
 
-    /* confetti on enter */
-    .spark {
-      position:fixed; width:10px; height:10px; z-index:99; pointer-events:none;
-      animation:fall 1.6s ease-in forwards;
+    /* soft ripple on enter */
+    .ripple {
+      position:fixed; width:20px; height:20px; z-index:99; pointer-events:none;
+      border-radius:50%; border:2px solid rgba(255,255,255,.8);
+      transform:translate(-50%,-50%);
+      animation:ripple 1.4s ease-out forwards;
     }
-    @keyframes fall { to { transform:translateY(105vh) rotate(720deg); opacity:0; } }
+    @keyframes ripple {
+      from { opacity:.9; }
+      to   { width:300px; height:300px; opacity:0; }
+    }
   </style>
 </head>
 <body>
@@ -138,9 +143,9 @@
         <li>2017 — Watch My Back: fan-favorite mixtape with darker, more personal songwriting</li>
         <li>2019 — Freewave 3: a defining project in his discography, featuring "More Than Ever"</li>
         <li>2022 — FLAWLESS LIKE ME: reached a larger audience with Future and Babyface Ray features</li>
-        <li>2023 — sx mney dr*gs: continued his commercial growth with tracks like "Super Urus"</li>
-        <li>2024 — GEMINI!: major studio album featuring Lil Yachty, Future, and Veeze</li>
+        <li>2023 — s*x M*ney Dr*gs: his most commercially successful project to date</li>
       </ul>
+      <p style="margin-top:12px; opacity:.8;">His music is defined by hazy, atmospheric production and introspective, melancholic lyrics delivered in a relaxed, understated flow.</p>
     </div>
 
     <div class="card reveal" style="margin-top:30px;">
@@ -176,26 +181,23 @@
   </main>
 
   <script>
-    // intro screen — click anywhere to enter, with confetti
+    // intro screen — click anywhere to enter, with a soft ripple
     const intro = document.getElementById('intro');
-    intro.addEventListener('click', () => {
+    intro.addEventListener('click', (e) => {
       intro.classList.add('gone');
-      const colors = ['#ff416c','#ff4b2b','#8e2de2','#ffffff'];
-      for (let i = 0; i < 40; i++) {
-        const s = document.createElement('div');
-        s.className = 'spark';
-        s.style.left = Math.random() * 100 + 'vw';
-        s.style.top = '-20px';
-        s.style.background = colors[i % colors.length];
-        s.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
-        document.body.appendChild(s);
-        setTimeout(() => s.remove(), 1700);
-      }
+
+      // gentle expanding ripple from where they clicked
+      const ripple = document.createElement('div');
+      ripple.className = 'ripple';
+      ripple.style.left = e.clientX + 'px';
+      ripple.style.top = e.clientY + 'px';
+      document.body.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 1500);
     });
 
     // fade-in on scroll
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
