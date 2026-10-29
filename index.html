@@ -1,3 +1,5 @@
+Got the complete file — this is now my master copy. Note this version doesn't have the About Me or East Oakland slides in it yet, so I've merged everything in: shared background on all slides, About Me slide, East Oakland slide, and the "Eastside raised" closer. Here's the full index.html:
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
-      margin:0; background:#0d0d0d; color:#fff;
+      margin:0; color:#fff;
       font-family:'Inter', Arial, sans-serif;
+      background:#0d0d0d url('148164.jpg') center/cover no-repeat fixed;
     }
     h1, h2, h3 { font-family:'Space Grotesk', Arial, sans-serif; }
 
@@ -15,19 +18,19 @@
       min-height:100vh; scroll-snap-align:start;
       display:flex; align-items:center; justify-content:center;
       padding:60px 24px; box-sizing:border-box;
+      position:relative;
     }
     .deck { scroll-snap-type:y mandatory; overflow-y:scroll; height:100vh; }
 
+    /* dimmer over the shared background */
+    .slide::before {
+      content:''; position:absolute; inset:0;
+      background:rgba(13,13,13,.6); pointer-events:none; z-index:0;
+    }
+    .slide > * { position:relative; z-index:1; }
+
     /* ---- intro slide ---- */
-    #intro {
-      position:relative; text-align:center; cursor:pointer;
-      overflow:hidden; flex-direction:column;
-    }
-    #intro .bg {
-      position:absolute; inset:0;
-      background:url('148164.jpg') center/cover no-repeat;
-      filter:brightness(.55);
-    }
+    #intro { text-align:center; cursor:pointer; overflow:hidden; flex-direction:column; }
     #intro .content { position:relative; z-index:2; }
     #intro h1 { font-size:64px; margin:0; letter-spacing:4px; }
     #intro p { font-size:22px; margin-top:16px; opacity:.95; max-width:600px; padding:0 20px; }
@@ -89,7 +92,6 @@
 
   <!-- slide 1: intro -->
   <section class="slide" id="intro">
-    <div class="bg"></div>
     <div class="content reveal">
       <h1>Hey, I'm Aaron.</h1>
       <p>Engineering intern, creator, and curious mind — here are some of my interests.</p>
@@ -97,7 +99,55 @@
     </div>
   </section>
 
-  <!-- slide 2: Sports divider -->
+  <!-- slide 2: about me -->
+  <section class="slide">
+    <div class="bio reveal">
+      <div class="photo"><img src="me.jpg" alt="Aaron Pena"></div>
+      <div class="text">
+        <h2>About Me</h2>
+        <p class="blurb">
+          I'm Aaron — an engineering intern with a curiosity that doesn't really turn off.
+          I like building things, whether that's code, websites like this one, or figuring
+          out how something works just because I can't leave it alone.
+        </p>
+        <p class="blurb">
+          I'm from Oakland, California, and I'm Mexican American — where I come from is a big
+          part of who I am and how I see the world. Outside of that you'll usually find me
+          watching football or fights, or with headphones on. I care about getting better
+          at something every day, even a little.
+        </p>
+        <p class="closer">Currently: Engineering intern · Learning the craft · East Oakland, CA — Eastside raised</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slide 3: roots — East Oakland -->
+  <section class="slide">
+    <div class="bio reveal">
+      <div class="photo"><img src="oakland.jpg" alt="East Oakland"></div>
+      <div class="text">
+        <h2>East Oakland</h2>
+        <p class="sub">Where I'm from — and a big part of who I am</p>
+        <p class="blurb">
+          I grew up in East Oakland as a Mexican American kid, and that shapes
+          everything about how I move through the world. It's a place that taught
+          me to stay sharp and stay humble at the same time — to read a room,
+          to work for what I want, and never to forget where I started.
+        </p>
+        <p class="blurb">
+          Growing up Hispanic in the Town meant family cookouts, the sound of
+          cumbias and oldies drifting out of somebody's car on a Sunday, mixed
+          with everything else the Eastside is — the beauty and the struggle
+          living side by side. It gave me pride in my roots and a chip on my
+          shoulder in the best way: proof that where you're from doesn't decide
+          where you're going.
+        </p>
+        <p class="closer">Everything I build from here, I'm carrying the Town with me.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- slide 4: Sports divider -->
   <section class="slide divider">
     <div class="reveal">
       <h2>Sports</h2>
@@ -105,7 +155,7 @@
     </div>
   </section>
 
-  <!-- slide 3: Messi -->
+  <!-- slide 5: Messi -->
   <section class="slide">
     <div class="bio reveal">
       <div class="photo"><img src="messi.jpg" alt="Lionel Messi"></div>
@@ -125,7 +175,7 @@
     </div>
   </section>
 
-  <!-- slide 4: Topuria -->
+  <!-- slide 6: Topuria -->
   <section class="slide">
     <div class="bio reveal">
       <div class="photo"><img src="ilia.jpg" alt="Ilia Topuria"></div>
@@ -144,7 +194,7 @@
     </div>
   </section>
 
-  <!-- slide 5: Music divider -->
+  <!-- slide 7: Music divider -->
   <section class="slide divider">
     <div class="reveal">
       <h2>Music</h2>
@@ -152,7 +202,7 @@
     </div>
   </section>
 
-  <!-- slide 6: Lucki -->
+  <!-- slide 8: Lucki -->
   <section class="slide">
     <div class="bio reveal">
       <div class="photo"><img src="lucki.png" alt="Days B4 III by Lucki"></div>
@@ -166,13 +216,12 @@
           <li>2017 — Watch My Back: fan-favorite mixtape with darker, more personal songwriting</li>
           <li>2019 — Freewave 3: a defining project in his discography, featuring "More Than Ever"</li>
           <li>2022 — FLAWLESS LIKE ME: reached a larger audience with Future and Babyface Ray features</li>
-          <!-- paste your remaining Lucki bullets here if there were more -->
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- slide 7: Carti -->
+  <!-- slide 9: Carti -->
   <section class="slide">
     <div class="bio reveal">
       <div class="photo"><img src="carti.jpg" alt="Die Lit by Playboi Carti"></div>
