@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aaron Pena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d0d0d'/><text x='50' y='70' font-size='58' text-anchor='middle' fill='%23fff' font-family='Arial' font-weight='bold'>A</text></svg>">
+
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
       margin:0; color:#fff;
       font-family:'Inter', Arial, sans-serif;
-      background:#0d0d0d url('sf.jpg') center/cover no-repeat fixed;
+      background:#0d0d0d;
+    }
+    /* fixed background that also works on iOS (background-attachment:fixed breaks there) */
+    body::before {
+      content:''; position:fixed; inset:0; z-index:-1;
+      background:#0d0d0d url('sf.jpg') center/cover no-repeat;
     }
     h1, h2, h3 { font-family:'Space Grotesk', Arial, sans-serif; }
 
     /* ---- full-screen slides ---- */
     .slide {
-      min-height:100vh; scroll-snap-align:start;
+      min-height:100vh; min-height:100dvh; scroll-snap-align:start;
       display:flex; align-items:center; justify-content:center;
       padding:60px 24px; box-sizing:border-box;
       position:relative;
     }
-    .deck { scroll-snap-type:y mandatory; overflow-y:scroll; height:100vh; }
+    .deck { scroll-snap-type:y mandatory; overflow-y:scroll; height:100vh; height:100dvh; }
 
     /* dimmer over the shared background */
     .slide::before {
@@ -72,16 +83,24 @@
     .reveal { opacity:0; transform:translateY(30px); transition:opacity .9s ease, transform .9s ease; }
     .reveal.visible { opacity:1; transform:none; }
 
-    /* soft ripple on enter */
-    .ripple {
-      position:fixed; width:20px; height:20px; z-index:99; pointer-events:none;
-      border-radius:50%; border:2px solid rgba(255,255,255,.8);
-      transform:translate(-50%,-50%);
-      animation:ripple 1.4s ease-out forwards;
+    /* respect users who prefer less motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transition:none; opacity:1; transform:none; }
+      .tap { animation:none; }
+      .bio .photo { transition:none; }
     }
-    @keyframes ripple {
-      from { opacity:.9; }
-      to   { width:300px; height:300px; opacity:0; }
+
+    /* ---- phones ---- */
+    @media (max-width:720px) {
+      .slide { padding:48px 20px; }
+      #intro h1 { font-size:40px; letter-spacing:2px; }
+      #intro p { font-size:18px; }
+      #intro .tap { margin-top:36px; }
+      .bio { gap:28px; }
+      .bio .photo { width:min(78vw, 300px); }
+      .bio h2 { font-size:30px; }
+      .bio .blurb { font-size:16px; }
+      .divider h2 { font-size:36px; letter-spacing:4px; }
     }
   </style>
 </head>
@@ -100,13 +119,13 @@
   <!-- slide 2: about me -->
   <section class="slide">
     <div class="bio reveal">
-      <div class="photo"><img src="me.jpg" alt="Aaron Pena"></div>
+      <div class="photo"><img src="me.jpg" alt="Aaron Pena" loading="lazy"></div>
       <div class="text">
         <h2>About Me</h2>
         <p class="blurb">
           I'm Aaron — an engineering intern with a curiosity to explore other things as I go.
           I like discovering new things about myself and pushing myself to open new doors. 
-          Picking a major isn't the easiest thing for me, but I love seeing everything interest me
+          Picking a major isn't the easiest thing for me, but I love that everything interests me.
         </p>
         <p class="blurb">
           I'm from Oakland, California, and I'm Mexican American — where I come from is a big
@@ -121,16 +140,16 @@
   <!-- slide 3: roots — East Oakland -->
   <section class="slide">
     <div class="bio reveal">
-      <div class="photo"><img src="oakland.jpg" alt="East Oakland"></div>
+      <div class="photo"><img src="oakland.jpg" alt="East Oakland" loading="lazy"></div>
       <div class="text">
         <h2>East Oakland</h2>
         <p class="sub">Where I'm from — and a big part of who I am</p>
         <p class="blurb">
           I grew up in East Oakland as a Mexican American kid, and that shapes
           everything about how I move through the world. It's a place that taught
-          me to stay pbservant of the people around me —  How to read a room,
+          me to stay observant of the people around me — how to read a room,
           work for what I want, and never to forget where I started. The city is
-          overrun by crime, violence, and it isn't exactly an ideal vacation.
+          overrun by crime, violence, and it isn't exactly an ideal vacation spot.
         </p>
         <p class="blurb">
           Growing up Hispanic in the Town meant family cookouts, the sound of
@@ -138,7 +157,7 @@
           with everything else the Eastside is. You'll most likely always hear
           a kids birthday party in the distance and always enjoy a walk to the 
           liquor store for groceries. Through the gun violence and diversity of 
-          the town, It gave me pride in my roots and a chip on my shoulder in 
+          the town, it gave me pride in my roots and a chip on my shoulder in 
           the best way: where you're from doesn't decide where you're going. 
         </p>
         <p class="closer">Everything I build from here, I'm carrying the Town with me.</p>
@@ -157,7 +176,7 @@
   <!-- slide 5: Messi -->
   <section class="slide">
     <div class="bio reveal">
-      <div class="photo"><img src="messi.jpg" alt="Lionel Messi"></div>
+      <div class="photo"><img src="messi.webp" alt="Lionel Messi" loading="lazy"></div>
       <div class="text">
         <h2>Lionel "La Pulga" Messi</h2>
         <p class="sub">8× Ballon d'Or winner · Forward · Argentina · Inter Miami CF (#10)</p>
@@ -177,7 +196,7 @@
   <!-- slide 6: Topuria -->
   <section class="slide">
     <div class="bio reveal">
-      <div class="photo"><img src="ilia.jpg" alt="Ilia Topuria"></div>
+      <div class="photo"><img src="ilia.webp" alt="Ilia Topuria" loading="lazy"></div>
       <div class="text">
         <h2>Ilia "El Matador" Topuria</h2>
         <p class="sub">Former two-division UFC champion · 17-1 · Georgian-Spanish · Lightweight</p>
@@ -197,14 +216,14 @@
   <section class="slide divider">
     <div class="reveal">
       <h2>Music</h2>
-      <p>You'll always see me with some headphones on - but these artists are usually in them.</p>
+      <p>You'll always see me with some headphones on — but these artists are usually in them.</p>
     </div>
   </section>
 
   <!-- slide 8: Lucki -->
   <section class="slide">
     <div class="bio reveal">
-      <div class="photo"><img src="lucki.png" alt="Days B4 III by Lucki"></div>
+      <div class="photo"><img src="lucki.avif" alt="Days B4 III by Lucki" loading="lazy"></div>
       <div class="text">
         <h2>Lucki</h2>
         <p class="sub">Rapper &amp; songwriter · Chicago, Illinois · Cloud rap / trap / alternative hip-hop</p>
@@ -223,7 +242,7 @@
   <!-- slide 9: Carti -->
   <section class="slide">
     <div class="bio reveal">
-      <div class="photo"><img src="carti.jpg" alt="Die Lit by Playboi Carti"></div>
+      <div class="photo"><img src="carti.jpg" alt="Die Lit by Playboi Carti" loading="lazy"></div>
       <div class="text">
         <h2>Playboi Carti</h2>
         <p class="sub">Rapper &amp; songwriter · Atlanta, Georgia · Trap / rage rap / experimental hip-hop · Opium / Interscope</p>
@@ -252,6 +271,10 @@
     entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // clicking the intro scrolls to the next slide (makes the "tap" hint real)
+  const intro = document.getElementById('intro');
+  intro.addEventListener('click', () => intro.nextElementSibling.scrollIntoView({ behavior:'smooth' }));
 </script>
 </body>
 </html>
