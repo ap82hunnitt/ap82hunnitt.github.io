@@ -95,6 +95,16 @@
     .bio ul { margin-top:18px; line-height:1.9; padding-left:20px; opacity:.85; }
     .bio ul li::marker { color:var(--accent); }
     .count { color:var(--accent); font-weight:600; font-variant-numeric:tabular-nums; }
+
+    /* ---- oakland slide edge decorations ---- */
+    .deco { position:absolute; top:0; bottom:0; width:180px; z-index:1; pointer-events:none; }
+    .deco-left { left:0; }
+    .deco-right { right:0; }
+    .deco svg { width:100%; height:100%; display:block; }
+    .deco .sway { transform-box:fill-box; transform-origin:50% 100%; animation:sway 5s ease-in-out infinite alternate; }
+    @keyframes sway { from { transform:rotate(-2.5deg); } to { transform:rotate(2.5deg); } }
+    @media (max-width:1100px) { .deco { opacity:.4; } }
+
     .bio .closer { margin-top:18px; opacity:.7; font-size:15px; line-height:1.6; }
 
     /* section divider slides */
@@ -119,11 +129,13 @@
       .bg { transition:none; }
       #intro .typed .caret { animation:none; }
       #intro h1 { animation:none; background-size:100% 14px; }
+      .deco .sway { animation:none; }
     }
 
     /* ---- phones ---- */
     @media (max-width:720px) {
       .slide { padding:48px 20px; }
+      .deco { width:100px; opacity:.35; }
       #intro h1 { font-size:40px; letter-spacing:2px; }
       #intro p { font-size:18px; }
       #intro .typed { font-size:20px; }
@@ -175,6 +187,76 @@
 
   <!-- slide 3: roots — East Oakland -->
   <section class="slide" data-bg="oakland">
+    <div class="deco deco-left" aria-hidden="true">
+      <svg viewBox="0 0 180 700" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <g id="marigold">
+            <g fill="#f0b429">
+              <ellipse rx="11" ry="26"/><ellipse rx="11" ry="26" transform="rotate(45)"/>
+              <ellipse rx="11" ry="26" transform="rotate(90)"/><ellipse rx="11" ry="26" transform="rotate(135)"/>
+            </g>
+            <g fill="#ea8c2f">
+              <ellipse rx="7" ry="16" transform="rotate(22)"/><ellipse rx="7" ry="16" transform="rotate(67)"/>
+              <ellipse rx="7" ry="16" transform="rotate(112)"/><ellipse rx="7" ry="16" transform="rotate(157)"/>
+            </g>
+            <circle r="9" fill="#92400e"/>
+          </g>
+        </defs>
+        <g fill="#f0b429" opacity=".8">
+          <rect x="26" y="0" width="5" height="86" rx="2.5"/><circle cx="28.5" cy="88" r="4"/>
+          <rect x="58" y="0" width="4" height="132" rx="2"/><circle cx="60" cy="134" r="3.2"/>
+          <rect x="92" y="0" width="6" height="58" rx="3"/><circle cx="95" cy="60" r="4.5"/>
+          <rect x="126" y="0" width="4" height="104" rx="2"/><circle cx="128" cy="106" r="3.2"/>
+          <rect x="150" y="0" width="3" height="44" rx="1.5"/><circle cx="151.5" cy="46" r="2.5"/>
+        </g>
+        <g class="sway">
+          <path d="M52 700 C 58 620, 42 560, 54 470" stroke="#4d7c0f" stroke-width="6" fill="none"/>
+          <path d="M50 610 q -26 -6 -34 -30 q 24 0 34 30" fill="#4d7c0f"/>
+          <path d="M53 545 q 26 -4 34 -28 q -24 -2 -34 28" fill="#4d7c0f"/>
+          <use href="#marigold" transform="translate(54,452)"/>
+        </g>
+        <g class="sway">
+          <path d="M118 700 C 122 650, 112 610, 120 560" stroke="#4d7c0f" stroke-width="5" fill="none"/>
+          <use href="#marigold" transform="translate(120,540) scale(.72)"/>
+        </g>
+        <g class="sway">
+          <path d="M24 700 C 26 668, 20 640, 26 606" stroke="#4d7c0f" stroke-width="4" fill="none"/>
+          <use href="#marigold" transform="translate(26,592) scale(.5)"/>
+        </g>
+      </svg>
+    </div>
+    <div class="deco deco-right" aria-hidden="true">
+      <svg viewBox="0 0 200 700" preserveAspectRatio="xMidYMax meet">
+        <g fill="none" stroke-linecap="round">
+          <path d="M28 110 C 70 50, 140 58, 172 118" stroke="#f0b429" stroke-width="10" opacity=".75"/>
+          <path d="M18 168 C 80 128, 140 150, 190 108" stroke="#d9559c" stroke-width="6" opacity=".55"/>
+          <path d="M36 226 q 62 -34 128 8" stroke="#ffffff" stroke-width="4" opacity=".3"/>
+        </g>
+        <g fill="#f0b429" opacity=".85">
+          <circle cx="56" cy="292" r="7"/><circle cx="82" cy="278" r="4"/>
+          <circle cx="72" cy="312" r="3"/><circle cx="102" cy="296" r="2.5"/>
+          <circle cx="46" cy="318" r="2"/>
+        </g>
+        <text x="52" y="368" font-family="Permanent Marker, cursive" font-size="42" fill="#f0b429" opacity=".85" transform="rotate(-6 52 368)">OAK</text>
+        <g transform="translate(28,392) rotate(-12)" opacity=".9">
+          <rect x="4" y="18" width="80" height="15" rx="2" fill="none" stroke="#f0b429" stroke-width="3"/>
+          <path d="M14 33 L38 33 L33 74 L10 74 Z" fill="none" stroke="#f0b429" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M46 33 c 0 15, 17 15, 19 0" fill="none" stroke="#f0b429" stroke-width="3"/>
+          <g fill="#f0b429">
+            <circle cx="96" cy="22" r="2.6"/><circle cx="104" cy="28" r="1.8"/>
+            <circle cx="99" cy="15" r="1.5"/><circle cx="108" cy="20" r="1.2"/>
+          </g>
+        </g>
+        <g fill="#d9559c" opacity=".5">
+          <circle cx="120" cy="560" r="5"/><circle cx="138" cy="548" r="3"/>
+          <circle cx="130" cy="576" r="2.2"/><circle cx="112" cy="572" r="1.8"/>
+        </g>
+        <g fill="#f0b429" opacity=".6">
+          <circle cx="60" cy="640" r="6"/><circle cx="78" cy="630" r="3.5"/>
+          <circle cx="70" cy="654" r="2.5"/>
+        </g>
+      </svg>
+    </div>
     <div class="bio reveal">
       <div class="photo"><img src="oakland.jpg" alt="East Oakland" loading="lazy"></div>
       <div class="text">
