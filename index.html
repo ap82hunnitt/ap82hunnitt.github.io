@@ -22,7 +22,6 @@
       opacity:1;
     }
     #bg-sports { background:radial-gradient(ellipse at 50% 25%, #4a3608 0%, #171208 55%, #0d0d0d 100%); }
-    #bg-mural { background:#0d0d0d url('bg-mural.jpg') center/cover no-repeat; }
     h1, h2, h3 { font-family:'Space Grotesk', Arial, sans-serif; }
     :root { --accent:#f0b429; }
     ::selection { background:var(--accent); color:#0d0d0d; }
@@ -46,7 +45,7 @@
     /* ---- intro slide ---- */
     #intro { text-align:center; cursor:pointer; overflow:hidden; flex-direction:column; }
     #intro .content { position:relative; z-index:2; }
-    #intro h1 { font-size:64px; margin:0; letter-spacing:4px; font-family:'Permanent Marker', 'Space Grotesk', Arial, sans-serif; }
+    #intro h1 { font-size:64px; margin:0; letter-spacing:4px; }
     #intro p { font-size:22px; margin-top:16px; opacity:.95; max-width:600px; padding:0 20px; }
     #intro .typed {
       margin-top:14px; min-height:1.5em; font-family:'Space Grotesk', Arial, sans-serif;
@@ -67,7 +66,6 @@
     #intro .tap {
       display:inline-block; margin-top:50px; font-size:14px; letter-spacing:4px;
       transform:rotate(-2deg);
-      font-family:'Permanent Marker', 'Space Grotesk', Arial, sans-serif;
       text-transform:uppercase; padding:14px 34px; border:2px solid var(--accent); color:var(--accent);
       border-radius:40px; transition:opacity 1.5s ease;
       animation:breathe 4s ease infinite;
@@ -142,7 +140,6 @@
 <body>
 <div class="bg" id="bg-oakland"></div>
 <div class="bg" id="bg-sports"></div>
-<div class="bg" id="bg-mural"></div>
 <div class="deck">
 
   <!-- slide 1: intro -->
@@ -177,7 +174,7 @@
   </section>
 
   <!-- slide 3: roots — East Oakland -->
-  <section class="slide" data-bg="mural">
+  <section class="slide" data-bg="oakland">
     <div class="bio reveal">
       <div class="photo"><img src="oakland.jpg" alt="East Oakland" loading="lazy"></div>
       <div class="text">
@@ -270,7 +267,7 @@
   intro.addEventListener('click', () => intro.nextElementSibling.scrollIntoView({ behavior:'smooth' }));
 
   // ---- crossfading backgrounds ----
-  const bgs = { oakland:document.getElementById('bg-oakland'), sports:document.getElementById('bg-sports'), mural:document.getElementById('bg-mural') };
+  const bgs = { oakland:document.getElementById('bg-oakland'), sports:document.getElementById('bg-sports') };
   const deck = document.querySelector('.deck');
   let bgTick = false;
   let activeBgName = 'oakland';
