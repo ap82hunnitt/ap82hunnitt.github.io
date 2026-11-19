@@ -96,6 +96,96 @@
       font-family:'Permanent Marker', cursive; font-size:clamp(28px, 6vw, 72px); color:#33302b;
       opacity:.08; transform:scaleX(-1) rotate(-4deg); pointer-events:none; text-align:center; padding:0 8%; }
 
+    /* ---- clickable characters ---- */
+    .skyline .char, .doodle .char { pointer-events:auto; cursor:pointer; }
+    .skyline .char, .doodle .char { transform-box:fill-box; transform-origin:center; }
+    .char.pounding { animation:pound .55s ease; }
+    @keyframes pound { 0%,100%{transform:scale(1)} 25%{transform:scale(1.18) rotate(-4deg)} 50%{transform:scale(.94)} 75%{transform:scale(1.12) rotate(4deg)} }
+    .char.roaring { animation:charRoar .55s ease; }
+    @keyframes charRoar { 0%,100%{transform:scale(1)} 30%{transform:scale(1.22) rotate(3deg)} 60%{transform:scale(.96) rotate(-2deg)} }
+    body.shaking .book { animation:screenShake .5s ease; }
+    @keyframes screenShake { 0%,100%{transform:translate(0,0)} 20%{transform:translate(-7px,4px)} 40%{transform:translate(6px,-5px)} 60%{transform:translate(-5px,3px)} 80%{transform:translate(4px,-2px)} }
+    .char.winking { animation:winkAnim .6s ease; }
+    @keyframes winkAnim { 0%,100%{transform:rotate(0)} 30%{transform:rotate(-7deg) scale(1.07)} 60%{transform:rotate(4deg)} }
+    .skyline .cow { opacity:0; }
+    .skyline .cow.abducting { animation:abduct 2.2s ease-in-out forwards; }
+    @keyframes abduct { 0%{opacity:0; transform:translateY(0) rotate(0)} 12%{opacity:1} 75%{opacity:1; transform:translateY(-115px) rotate(-14deg)} 100%{opacity:0; transform:translateY(-115px) rotate(-14deg)} }
+
+    /* ---- time of day ---- */
+    .skyline .sun { display:none; }
+    body.daytime .skyline .sun { display:block; }
+    body.daytime .skyline .moon, body.daytime .skyline .stars { display:none; }
+
+    /* ---- hyphy mode (konami code) ---- */
+    body.hyphy { color:#e8e8e8; }
+    body.hyphy .face.front {
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,0) 6%),
+        repeating-linear-gradient(180deg, transparent 0px, transparent 31px, rgba(255,255,255,.08) 31px, rgba(255,255,255,.08) 32px),
+        #16181a; }
+    body.hyphy .face.back { background:linear-gradient(105deg, #101214 0%, #181a1d 55%, #0d0f11 100%); }
+    body.hyphy .pagenum { color:#e8e8e8; }
+    body.hyphy .pager button { background:rgba(22,24,26,.85); color:#e8e8e8; border-color:rgba(232,232,232,.4); }
+    body.hyphy .pager .num { color:#e8e8e8; }
+    body.hyphy .bio .photo { background:#222; }
+    body.hyphy .bio .photo .caption { color:#e8e8e8; }
+    body.hyphy .signbox label, body.hyphy .signbox input { color:#e8e8e8; }
+    body.hyphy .stamps .stamp-label { color:#e8e8e8; }
+    body.hyphy .book { animation:hyphyWobble .45s ease-in-out infinite; }
+    @keyframes hyphyWobble { 0%,100%{transform:translate(0,0) rotate(0)} 25%{transform:translate(1.5px,-1px) rotate(.15deg)} 50%{transform:translate(-1.5px,1px) rotate(-.15deg)} 75%{transform:translate(1px,1.5px) rotate(.1deg)} }
+    body.hyphy .spokes { animation:spinWheel .7s linear infinite; transform-box:fill-box; transform-origin:center; }
+    @keyframes spinWheel { to { transform:rotate(360deg); } }
+    .hyphy-banner { position:fixed; top:18px; left:50%; transform:translateX(-50%) rotate(-2deg); z-index:70;
+      font-family:'Permanent Marker', cursive; font-size:34px; color:#e8e8e8; letter-spacing:3px;
+      text-shadow:2px 2px 0 #000; display:none; pointer-events:none; }
+    body.hyphy .hyphy-banner { display:block; animation:bannerIn .4s ease; }
+    @keyframes bannerIn { from{opacity:0; transform:translateX(-50%) scale(1.6) rotate(-6deg)} to{opacity:1; transform:translateX(-50%) scale(1) rotate(-2deg)} }
+
+    /* ---- pen cursor + ink trail ---- */
+    body { cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M4 22 L7 8 L12 3 L15 6 L10 12 Z' fill='%2333302b' stroke='%23faf6ec' stroke-width='1.5'/%3E%3Ccircle cx='7' cy='19' r='1.6' fill='%23faf6ec'/%3E%3C/svg%3E") 4 22, auto; }
+    #inkTrail { position:fixed; inset:0; pointer-events:none; z-index:65; }
+
+    /* ---- photo captions ---- */
+    .bio .photo { padding:12px 12px 46px; }
+    .bio .photo .caption { position:absolute; bottom:9px; left:0; right:0; text-align:center;
+      font-family:'Caveat', cursive; font-size:19px; color:#33302b; }
+
+    /* ---- sign the notebook ---- */
+    .signbox { margin-top:34px; }
+    .signbox label { font-family:'Caveat', cursive; font-size:22px; color:#33302b; display:block; }
+    .signbox input { background:transparent; border:none; border-bottom:2px dashed #9ca3af; outline:none;
+      font-family:'Caveat', cursive; font-size:26px; color:#33302b; text-align:center; width:220px; padding:4px 8px; }
+    .signbox input:focus { border-bottom-color:var(--accent); }
+    #signatures { margin-top:10px; min-height:34px; }
+    #signatures .sig { display:inline-block; margin:4px 10px; font-family:'Caveat', cursive;
+      font-size:24px; color:#1d4ed8; }
+
+    /* ---- exploration stamps ---- */
+    .stamps { margin-top:26px; display:flex; gap:18px; justify-content:center; align-items:center; flex-wrap:wrap; }
+    .stamps svg { width:74px; height:74px; }
+    .stamps .stamp-label { font-family:'Caveat', cursive; font-size:18px; color:#33302b; width:100%; text-align:center; }
+
+    /* ---- worn pages ---- */
+    .page.worn .face.front::after { content:''; position:absolute; top:0; right:0; width:0; height:0;
+      border-style:solid; border-width:0 30px 30px 0; border-color:transparent #ddd4c2; }
+    .page.worn .face.front::before { content:''; position:absolute; inset:0; pointer-events:none; z-index:6;
+      background:linear-gradient(135deg, transparent 46%, rgba(80,60,30,.05) 47%, rgba(80,60,30,.05) 49%, transparent 50%); }
+
+    /* ---- print as zine ---- */
+    @media print {
+      body { background:#fff; cursor:auto; }
+      .book { position:static; overflow:visible; perspective:none; }
+      .page { position:relative; transform:none !important; display:block; page-break-after:always; }
+      .face { position:static; backface-visibility:visible; }
+      .face.back { display:none; }
+      .pager, .edge, #inkTrail, .hyphy-banner { display:none !important; }
+      .skyline, .doodle { opacity:1; }
+      .skyline .st, .doodle .st { stroke-dashoffset:0 !important; animation:none !important; }
+      .skyline .fl, .doodle .fl { opacity:1 !important; animation:none !important; }
+      .reveal { opacity:1 !important; transform:none !important; }
+      .slide { min-height:90vh; }
+    }
+
     /* colorful graffiti / doodle backgrounds that draw themselves in */
     .slide > .doodle { position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.55; }
     .doodle svg { width:100%; height:100%; display:block; }
@@ -329,7 +419,7 @@
       </svg>
     </div>
     <div class="bio reveal">
-      <div class="photo"><img src="me.jpg" alt="Aaron Pena" loading="lazy"></div>
+      <div class="photo" data-caption="me, obviously"><img src="me.jpg" alt="Aaron Pena" loading="lazy"></div>
       <div class="text">
         <h2>About Me</h2>
         <p class="blurb">
@@ -492,27 +582,36 @@
         <path class="fl" style="--d:1.6s" fill="#ef4444" stroke="#7f1d1d" stroke-width="2" d="M1155 212 h18 v26 h-18 Z"/>
         <path class="fl" style="--d:1.65s" fill="#33302b" d="M1159 204 h10 v8 h-10 Z"/>
         <path class="st" style="--d:1.7s" pathLength="100" stroke="#9ca3af" stroke-width="2" d="M1175 210 L1190 206 M1175 218 L1192 218 M1175 226 L1188 230"/>
-        <!-- scraper bike below photo -->
+        <!-- mural wall behind the bike -->
+        <path class="st" style="--d:1.7s" pathLength="100" stroke="#92400e" stroke-width="3" d="M30 545 L470 545 L470 695 L30 695 Z"/>
+        <path class="st" style="--d:1.75s" pathLength="100" stroke="#c08552" stroke-width="2" d="M30 572 L470 572 M30 599 L470 599 M30 626 L470 626 M30 653 L470 653 M30 675 L470 675"/>
+        <path class="st" style="--d:1.8s" pathLength="100" stroke="#c08552" stroke-width="2" d="M115 545 L115 572 M295 545 L295 572 M205 572 L205 599 M385 572 L385 599 M115 599 L115 626 M295 599 L295 626 M205 626 L205 653 M385 626 L385 653 M115 653 L115 675 M295 653 L295 675"/>
+        <path class="st" style="--d:1.85s" pathLength="100" stroke="#ef4444" stroke-width="4" d="M52 640 L95 595 M95 595 L80 598 M95 595 L91 610 M57 635 L48 628"/>
+        <path class="fl" style="--d:1.9s" fill="#f0b429" stroke="#92400e" stroke-width="2" d="M415 640 L420 612 L433 626 L444 606 L455 626 L466 612 L470 640 Z"/>
+        <!-- scraper bike below photo (in front of the wall) -->
         <path class="st" style="--d:1.8s" pathLength="100" stroke="#33302b" stroke-width="3.5" d="M88 630 a52 52 0 1 0 104 0 a52 52 0 1 0 -104 0"/>
         <path class="st" style="--d:1.85s" pathLength="100" stroke="#33302b" stroke-width="3.5" d="M348 630 a52 52 0 1 0 104 0 a52 52 0 1 0 -104 0"/>
         <path class="fl" style="--d:1.9s" fill="#ef4444" d="M108 630 a32 32 0 1 0 64 0 a32 32 0 1 0 -64 0"/>
         <path class="fl" style="--d:1.95s" fill="#38bdf8" d="M368 630 a32 32 0 1 0 64 0 a32 32 0 1 0 -64 0"/>
         <path class="fl" style="--d:2s" fill="#ffffff" d="M126 630 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0 M386 630 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0"/>
-        <path class="st" style="--d:2.05s" pathLength="100" stroke="#33302b" stroke-width="2" d="M140 598 L140 662 M108 630 L172 630 M118 608 L162 652 M162 608 L118 652 M400 598 L400 662 M368 630 L432 630 M378 608 L422 652 M422 608 L378 652"/>
+        <path class="st spokes" style="--d:2.05s" pathLength="100" stroke="#33302b" stroke-width="2" d="M140 598 L140 662 M108 630 L172 630 M118 608 L162 652 M162 608 L118 652"/>
+        <path class="st spokes" style="--d:2.05s" pathLength="100" stroke="#33302b" stroke-width="2" d="M400 598 L400 662 M368 630 L432 630 M378 608 L422 652 M422 608 L378 652"/>
         <path class="st" style="--d:2.15s" pathLength="100" stroke="#33302b" stroke-width="4" d="M290 632 L265 558 M290 632 L400 630 M265 555 L400 630 M290 632 L202 578 M265 555 L198 562 M198 570 L140 630"/>
         <path class="st" style="--d:2.25s" pathLength="100" stroke="#33302b" stroke-width="3" d="M198 562 L192 545 M180 546 L206 542 M265 555 L262 545 M246 544 q16 -8 32 0"/>
         <path class="st" style="--d:2.3s" pathLength="100" stroke="#33302b" stroke-width="2.5" d="M290 632 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 M300 632 L316 650 M308 650 L325 650"/>
         <path class="st" style="--d:2.35s" pathLength="100" stroke="#33302b" stroke-width="1.5" d="M292 626 L400 624"/>
         <path class="st" style="--d:2.4s" pathLength="100" stroke="#f0b429" stroke-width="2.5" d="M75 575 v10 M70 580 h10 M460 575 v10 M455 580 h10"/>
-        <text class="fl" style="--d:2.45s" x="255" y="695" font-family="Permanent Marker, cursive" font-size="26" fill="#38bdf8" transform="rotate(-4 255 695)">510</text>
-        <text class="fl" style="--d:2.5s" x="55" y="540" font-family="Permanent Marker, cursive" font-size="18" fill="#4ade80" transform="rotate(-3 55 540)">Eastside</text>
-        <!-- thizz face right strip -->
+        <text class="fl" style="--d:2.45s" x="415" y="690" font-family="Permanent Marker, cursive" font-size="24" fill="#38bdf8" transform="rotate(-5 415 690)">510</text>
+        <text class="fl" style="--d:2.5s" x="48" y="538" font-family="Permanent Marker, cursive" font-size="18" fill="#4ade80" transform="rotate(-3 48 538)">Eastside</text>
+        <!-- thizz face right strip (click me) -->
+        <g class="char char-thizz">
         <path class="st" style="--d:2.6s" pathLength="100" stroke="#33302b" stroke-width="3.5" d="M1093 400 a42 42 0 1 0 84 0 a42 42 0 1 0 -84 0"/>
         <path class="fl" style="--d:2.7s" fill="#f0b429" d="M1093 400 a42 42 0 1 0 84 0 a42 42 0 1 0 -84 0"/>
         <path class="st" style="--d:2.75s" pathLength="100" stroke="#33302b" stroke-width="3" d="M1110 390 q8 -10 16 0 M1144 390 q8 -10 16 0"/>
         <path class="st" style="--d:2.8s" pathLength="100" stroke="#33302b" stroke-width="3" d="M1113 412 q22 20 44 0"/>
         <path class="fl" style="--d:2.85s" fill="#ef4444" d="M1125 418 a10 7 0 1 0 20 0 a10 7 0 1 0 -20 0"/>
         <text class="fl" style="--d:2.9s" x="1135" y="480" font-family="Permanent Marker, cursive" font-size="20" fill="#33302b" text-anchor="middle" transform="rotate(-3 1135 480)">THIZZ</text>
+        </g>
         <!-- marginalia: real one -->
         <text class="fl" style="--d:3.2s" x="1078" y="300" font-family="Caveat, cursive" font-size="26" fill="#1d4ed8" transform="rotate(-3 1078 300)">real one</text>
         <path class="st" style="--d:3.3s" pathLength="100" stroke="#1d4ed8" stroke-width="2" d="M1080 312 q28 5 55 1"/>
@@ -532,7 +631,7 @@
       </svg>
     </div>
     <div class="bio reveal">
-      <div class="photo"><img src="oakland.jpg" alt="East Oakland" loading="lazy"></div>
+      <div class="photo" data-caption="the Town, no filter"><img src="oakland.jpg" alt="East Oakland" loading="lazy"></div>
       <div class="text">
         <h2>East Oakland</h2>
         <p class="sub">Where I'm from — and a big part of who I am</p>
@@ -773,7 +872,7 @@
       </svg>
     </div>
     <div class="bio reveal">
-      <div class="photo"><img src="messi.webp" alt="Lionel Messi" loading="lazy"></div>
+      <div class="photo" data-caption="the GOAT himself"><img src="messi.webp" alt="Lionel Messi" loading="lazy"></div>
       <div class="text">
         <h2>Lionel "La Pulga" Messi</h2>
         <p class="sub"><span class="count" data-count="8">8</span>× Ballon d'Or winner · Forward · Argentina · Inter Miami CF (#10)</p>
@@ -932,7 +1031,7 @@
       </svg>
     </div>
     <div class="bio reveal">
-      <div class="photo"><img src="ilia.webp" alt="Ilia Topuria" loading="lazy"></div>
+      <div class="photo" data-caption="El Matador"><img src="ilia.webp" alt="Ilia Topuria" loading="lazy"></div>
       <div class="text">
         <h2>Ilia "El Matador" Topuria</h2>
         <p class="sub">Former two-division UFC champion · <span class="count" data-count="17">17</span>-1 · Georgian-Spanish · Lightweight</p>
@@ -976,6 +1075,12 @@
       </svg>
     </div>
     <p>Made by Aaron Pena</p>
+    <div class="signbox">
+      <label for="signInput">sign the notebook:</label>
+      <input id="signInput" maxlength="24" placeholder="your name" autocomplete="off">
+      <div id="signatures"></div>
+    </div>
+    <div class="stamps" id="stamps"></div>
     <div class="skyline" aria-hidden="true"></div>
       </div>
     </div>
@@ -1015,12 +1120,14 @@
   <path class="st thin" style="--d:1.01s" pathLength="100" d="M192 310 h12 v14 h-12 Z"/>
   <path class="st thin" style="--d:1.05s" pathLength="100" d="M172 380 h12 v14 h-12 Z"/>
   <path class="st thin" style="--d:1.08s" pathLength="100" d="M192 380 h12 v14 h-12 Z"/>
-  <!-- godzilla rising from the water -->
+  <!-- godzilla rising from the water (click me) -->
+  <g class="char char-godzilla">
   <path class="st" style="--d:1.12s" pathLength="100" d="M150 600 Q 155 470 190 455 Q 225 470 232 600"/>
-  <path class="st thin" style="--d:1.15s" pathLength="100" d="M160 505 L165 485 L172 505 M175 480 L181 458 L188 480 M192 478 L199 455 L206 478"/>
+  <path class="st thin" style="--d:1.16s" pathLength="100" d="M160 505 L165 485 L172 505 M175 480 L181 458 L188 480 M192 478 L199 455 L206 478"/>
   <path class="st" style="--d:1.19s" pathLength="100" d="M190 455 Q 215 445 228 455 L244 462 L228 468 Q 212 470 190 462 Z"/>
   <path class="st thin" style="--d:1.22s" pathLength="100" d="M215 505 L228 495"/>
   <path class="st thin" style="--d:1.26s" pathLength="100" d="M152 598 Q 125 580 105 598"/>
+  </g>
   <!-- building 3 warehouse -->
   <path class="st" style="--d:1.29s" pathLength="100" d="M232 600 L234 460 L328 458 L330 600"/>
   <path class="st thin" style="--d:1.36s" pathLength="100" d="M234 460 L280 446 L328 458"/>
@@ -1066,12 +1173,14 @@
   <path class="st thin" style="--d:2.77s" pathLength="100" d="M798 126 a10 10 0 1 0 -20 0 a10 10 0 1 0 20 0"/>
   <path class="st thin" style="--d:2.8s" pathLength="100" d="M788 126 L788 119 M788 126 L795 126"/>
   <path class="st thin" style="--d:2.83s" pathLength="100" d="M790 103 L789 60"/>
-  <!-- king kong climbing the antenna -->
+  <!-- king kong climbing the antenna (click me) -->
+  <g class="char char-kong">
   <path class="st" style="--d:2.87s" pathLength="100" d="M775 140 Q770 105 790 100 Q812 105 807 140 Z"/>
   <path class="st" style="--d:2.94s" pathLength="100" d="M783 92 a9 9 0 1 0 18 0 a9 9 0 1 0 -18 0"/>
   <path class="st thin" style="--d:2.97s" pathLength="100" d="M786 105 L778 78"/>
   <path class="st thin" style="--d:3.01s" pathLength="100" d="M800 110 L815 95"/>
   <path class="st thin" style="--d:3.04s" pathLength="100" d="M782 138 L775 152 M802 138 L808 152"/>
+  </g>
   <!-- building 5 windows -->
   <path class="st thin" style="--d:3.08s" pathLength="100" d="M766 200 h14 v16 h-14 Z"/>
   <path class="st thin" style="--d:3.11s" pathLength="100" d="M806 200 h14 v16 h-14 Z"/>
@@ -1112,24 +1221,36 @@
   <path class="st thin" style="--d:4.13s" pathLength="100" d="M92 150 L108 150 L106 138 L94 138 Z"/>
   <path class="st thin" style="--d:4.17s" pathLength="100" d="M100 138 L150 70 M104 140 L172 82 M150 70 Q 162 78 172 82"/>
   <path class="st red" style="--d:4.2s" pathLength="100" d="M148 80 Q152 70 157 76 L158 72 L159 76 Q164 70 168 80 Q163 77 158 81 Q153 77 148 80 Z"/>
-  <!-- ufo -->
-  <g class="bob">
+  <!-- ufo (click me) -->
+  <g class="bob char char-ufo">
   <path class="st" style="--d:4.23s" pathLength="100" d="M634 132 a26 8 0 1 0 52 0 a26 8 0 1 0 -52 0"/>
   <path class="st thin" style="--d:4.27s" pathLength="100" d="M650 130 a12 10 0 0 1 20 0"/>
   <path class="st thin" style="--d:4.3s" pathLength="100" d="M652 140 L640 175 M668 140 L680 175 M660 142 L660 178"/>
+  <g class="cow">
+    <path class="st thin" style="--d:4.3s" pathLength="100" d="M638 262 q-6 -16 8 -20 q22 -8 40 2 q10 6 8 18 l-2 8 q-24 8 -46 2 Z"/>
+    <path class="st thin" style="--d:4.3s" pathLength="100" d="M640 246 q-10 -2 -12 6 q6 6 12 2"/>
+    <path class="fl" style="--d:4.3s" fill="#33302b" d="M652 250 a5 4 0 1 0 10 0 a5 4 0 1 0 -10 0 M672 258 a4 3 0 1 0 8 0 a4 3 0 1 0 -8 0"/>
+    <path class="st thin" style="--d:4.3s" pathLength="100" d="M644 270 l-2 12 M656 271 l-1 11 M670 271 l1 11 M682 269 l3 11 M686 258 q8 2 6 12"/>
+  </g>
   </g>
   <!-- water -->
   <path class="st thin" style="--d:4.34s" pathLength="100" d="M0 602 C 200 598, 500 604, 800 600 C 950 598, 1100 602, 1200 600"/>
   <path class="st thin" style="--d:4.41s" pathLength="100" d="M60 612 C 300 608, 700 614, 1140 610"/>
   <!-- moon (red pen) -->
-  <path class="st red" style="--d:4.48s" pathLength="100" d="M830 120 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0"/>
-  <path class="st thin red" style="--d:4.55s" pathLength="100" d="M840 110 a5 5 0 1 0 .1 0"/>
-  <path class="st thin red" style="--d:4.58s" pathLength="100" d="M852 128 a4 4 0 1 0 .1 0"/>
+  <path class="st red moon" style="--d:4.48s" pathLength="100" d="M830 120 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0"/>
+  <path class="st thin red moon" style="--d:4.55s" pathLength="100" d="M840 110 a5 5 0 1 0 .1 0"/>
+  <path class="st thin red moon" style="--d:4.58s" pathLength="100" d="M852 128 a4 4 0 1 0 .1 0"/>
+  <!-- sun (shown in daytime) -->
+  <g class="sun">
+  <path class="st" style="--d:4.48s" pathLength="100" stroke="#b45309" stroke-width="3" d="M860 120 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0"/>
+  <path class="fl" style="--d:4.5s" fill="#f0b429" d="M860 120 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0"/>
+  <path class="st" style="--d:4.55s" pathLength="100" stroke="#fb923c" stroke-width="4" d="M890 78 L890 62 M890 162 L890 178 M848 120 L832 120 M932 120 L948 120 M860 88 L849 77 M920 88 L931 77 M860 152 L849 163 M920 152 L931 163"/>
+  </g>
   <!-- stars -->
-  <path class="st thin" style="--d:4.62s" pathLength="100" d="M180 150 v14 M173 157 h14"/>
-  <path class="st thin" style="--d:4.66s" pathLength="100" d="M420 100 v10 M415 105 h10"/>
-  <path class="st thin" style="--d:4.69s" pathLength="100" d="M560 130 v12 M554 136 h12"/>
-  <path class="st thin" style="--d:4.72s" pathLength="100" d="M480 70 v10 M475 75 h10"/>
+  <path class="st thin stars" style="--d:4.62s" pathLength="100" d="M180 150 v14 M173 157 h14"/>
+  <path class="st thin stars" style="--d:4.66s" pathLength="100" d="M420 100 v10 M415 105 h10"/>
+  <path class="st thin stars" style="--d:4.69s" pathLength="100" d="M560 130 v12 M554 136 h12"/>
+  <path class="st thin stars" style="--d:4.72s" pathLength="100" d="M480 70 v10 M475 75 h10"/>
   <!-- birds -->
   <path class="st thin" style="--d:4.76s" pathLength="100" d="M245 235 q 6 -6 12 0 q 6 -6 12 0"/>
   <path class="st thin" style="--d:4.79s" pathLength="100" d="M770 215 q 6 -6 12 0 q 6 -6 12 0"/>
@@ -1204,6 +1325,7 @@
     updatePager();
     history.replaceState(null, '', '#p' + (cur + 1));
     activate(cur);
+    trackVisit(cur);
     const done = () => {
       turning.classList.remove('turning');
       turning.style.zIndex = '';
@@ -1258,6 +1380,7 @@
   document.querySelector('.edge-r').addEventListener('click', () => go(cur + 1));
 
   document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     if (e.key === ' ' && e.target.tagName === 'BUTTON') return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(cur + 1); }
     else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); go(cur - 1); }
@@ -1287,6 +1410,194 @@
 
   // clicking the intro page turns to the next page
   document.getElementById('intro').addEventListener('click', () => go(cur + 1));
+
+  // ---- clickable characters ----
+  document.addEventListener('click', e => {
+    const ufo = e.target.closest('.char-ufo');
+    if (ufo) {
+      const cow = ufo.querySelector('.cow');
+      if (cow && !cow.classList.contains('abducting')) {
+        cow.classList.add('abducting');
+        setTimeout(() => cow.classList.remove('abducting'), 2300);
+      }
+      return;
+    }
+    const kong = e.target.closest('.char-kong');
+    if (kong && !kong.classList.contains('pounding')) {
+      kong.classList.add('pounding');
+      setTimeout(() => kong.classList.remove('pounding'), 600);
+      return;
+    }
+    const god = e.target.closest('.char-godzilla');
+    if (god && !god.classList.contains('roaring')) {
+      god.classList.add('roaring');
+      document.body.classList.add('shaking');
+      setTimeout(() => { god.classList.remove('roaring'); document.body.classList.remove('shaking'); }, 600);
+      return;
+    }
+    const thizz = e.target.closest('.char-thizz');
+    if (thizz && !thizz.classList.contains('winking')) {
+      thizz.classList.add('winking');
+      setTimeout(() => thizz.classList.remove('winking'), 650);
+      return;
+    }
+  });
+
+  // ---- hyphy mode via konami code ----
+  const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let kpos = 0;
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    kpos = (e.key === konami[kpos]) ? kpos + 1 : (e.key === konami[0] ? 1 : 0);
+    if (kpos === konami.length) {
+      kpos = 0;
+      document.body.classList.toggle('hyphy');
+      if (document.body.classList.contains('hyphy')) {
+        localStorage.setItem('stn_hyphy', '1');
+        earnStamp('hyphy');
+      }
+    }
+    if (e.key === 'Escape') document.body.classList.remove('hyphy');
+  });
+  const hyphyBanner = document.createElement('div');
+  hyphyBanner.className = 'hyphy-banner';
+  hyphyBanner.textContent = 'GO DUMB - HYPHY MODE';
+  document.body.appendChild(hyphyBanner);
+
+  // ---- time of day: sun by day, moon + stars by night ----
+  const hour = new Date().getHours();
+  if (hour >= 6 && hour < 18) document.body.classList.add('daytime');
+
+  // ---- pen cursor ink trail ----
+  if (!reduced) {
+    const trail = document.createElement('canvas');
+    trail.id = 'inkTrail';
+    document.body.appendChild(trail);
+    const tctx = trail.getContext('2d');
+    let pts = [];
+    function sizeTrail() { trail.width = innerWidth; trail.height = innerHeight; }
+    sizeTrail();
+    window.addEventListener('resize', sizeTrail);
+    document.addEventListener('mousemove', e => {
+      pts.push({ x: e.clientX, y: e.clientY, life: 1 });
+      if (pts.length > 40) pts.shift();
+    });
+    (function drawTrail() {
+      tctx.clearRect(0, 0, trail.width, trail.height);
+      tctx.strokeStyle = 'rgba(51,48,43,0.5)';
+      tctx.lineWidth = 2.5;
+      tctx.lineCap = 'round';
+      for (let i = 1; i < pts.length; i++) {
+        const a = pts[i - 1], b = pts[i];
+        if (a.life > 0.05 && b.life > 0.05) {
+          tctx.globalAlpha = Math.min(a.life, b.life) * 0.6;
+          tctx.beginPath();
+          tctx.moveTo(a.x, a.y);
+          tctx.lineTo(b.x, b.y);
+          tctx.stroke();
+        }
+      }
+      tctx.globalAlpha = 1;
+      pts.forEach(pt => pt.life -= 0.025);
+      pts = pts.filter(pt => pt.life > 0);
+      requestAnimationFrame(drawTrail);
+    })();
+  }
+
+  // ---- photo captions ----
+  document.querySelectorAll('.bio .photo[data-caption]').forEach(ph => {
+    const cap = document.createElement('div');
+    cap.className = 'caption';
+    cap.textContent = ph.dataset.caption;
+    ph.appendChild(cap);
+  });
+
+  // ---- sign the notebook (localStorage) ----
+  const signInput = document.getElementById('signInput');
+  const sigBox = document.getElementById('signatures');
+  function renderSigs() {
+    const sigs = JSON.parse(localStorage.getItem('stn_sigs') || '[]');
+    sigBox.innerHTML = '';
+    sigs.forEach((name, i) => {
+      const sp = document.createElement('span');
+      sp.className = 'sig';
+      sp.textContent = name;
+      sp.style.transform = 'rotate(' + ((i % 2 ? 2 : -3)) + 'deg)';
+      sigBox.appendChild(sp);
+    });
+  }
+  if (signInput) {
+    renderSigs();
+    signInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && signInput.value.trim()) {
+        const sigs = JSON.parse(localStorage.getItem('stn_sigs') || '[]');
+        const name = signInput.value.trim().slice(0, 24);
+        if (!sigs.includes(name)) {
+          sigs.push(name);
+          localStorage.setItem('stn_sigs', JSON.stringify(sigs));
+        }
+        signInput.value = '';
+        renderSigs();
+      }
+    });
+  }
+
+  // ---- exploration stamps ----
+  const STAMPS = {
+    explorer: { label: 'EXPLORER', color: '#c0392b' },
+    hyphy: { label: 'HYPHY', color: '#38bdf8' },
+    shutterbug: { label: 'PAPARAZZI', color: '#f0b429' }
+  };
+  function getStamps() { return JSON.parse(localStorage.getItem('stn_stamps') || '[]'); }
+  function earnStamp(id) {
+    const st = getStamps();
+    if (!st.includes(id)) {
+      st.push(id);
+      localStorage.setItem('stn_stamps', JSON.stringify(st));
+      renderStamps();
+    }
+  }
+  function renderStamps() {
+    const box = document.getElementById('stamps');
+    if (!box) return;
+    const st = getStamps();
+    box.innerHTML = '<div class="stamp-label">stamps:</div>';
+    Object.keys(STAMPS).forEach(id => {
+      const def = STAMPS[id];
+      const earned = st.includes(id);
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 80 80');
+      svg.innerHTML = earned
+        ? '<circle cx="40" cy="40" r="34" fill="none" stroke="' + def.color + '" stroke-width="3" stroke-dasharray="6 4"/>'
+          + '<circle cx="40" cy="40" r="28" fill="none" stroke="' + def.color + '" stroke-width="1.5"/>'
+          + '<text x="40" y="45" text-anchor="middle" font-family="Permanent Marker, cursive" font-size="11" fill="' + def.color + '" transform="rotate(-8 40 40)">' + def.label + '</text>'
+        : '<circle cx="40" cy="40" r="34" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="4 6"/>'
+          + '<text x="40" y="47" text-anchor="middle" font-family="Permanent Marker, cursive" font-size="22" fill="#c08552">?</text>';
+      box.appendChild(svg);
+    });
+  }
+  renderStamps();
+
+  // track page visits (explorer stamp + worn pages)
+  function trackVisit(i) {
+    const visits = JSON.parse(localStorage.getItem('stn_visits') || '{}');
+    visits[i] = (visits[i] || 0) + 1;
+    localStorage.setItem('stn_visits', JSON.stringify(visits));
+    if (visits[i] >= 3) pages[i].classList.add('worn');
+    const seen = new Set(Object.keys(visits).map(Number));
+    if (seen.size >= pages.length) earnStamp('explorer');
+  }
+  trackVisit(cur);
+
+  // track photo hovers (paparazzi stamp)
+  let hoveredPhotos = new Set(JSON.parse(localStorage.getItem('stn_photos') || '[]'));
+  document.querySelectorAll('.bio .photo').forEach((ph, idx) => {
+    ph.addEventListener('mouseenter', () => {
+      hoveredPhotos.add(idx);
+      localStorage.setItem('stn_photos', JSON.stringify([...hoveredPhotos]));
+      if (hoveredPhotos.size >= document.querySelectorAll('.bio .photo').length) earnStamp('shutterbug');
+    });
+  });
 
   // ---- typing intro ----
   const phrases = ['engineering intern','East Oakland raised','football head'];
