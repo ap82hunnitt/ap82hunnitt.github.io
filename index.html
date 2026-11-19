@@ -123,6 +123,11 @@
     @keyframes arghAnim { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-8deg) scale(1.08)} 55%{transform:rotate(6deg) scale(1.05)} 80%{transform:rotate(-3deg)} }
     .bio .photo .photo-fallback { position:absolute; top:12px; left:12px; right:12px; bottom:18px; z-index:0; }
     .bio .photo img { position:relative; z-index:1; }
+    .page:not([data-pos="active"]) .float,
+    .page:not([data-pos="active"]) .sway,
+    .page:not([data-pos="active"]) .bob,
+    .page:not([data-pos="active"]) .bob2 { animation-play-state: paused; }
+
     /* ---- time of day ---- */
     .skyline .sun { display:none; }
     body.daytime .skyline .sun { display:block; }
@@ -747,11 +752,13 @@
         <path class="st" style="--d:1.5s" pathLength="100" stroke="#1d4ed8" stroke-width="2" d="M110 438 L110 472 M93 455 L127 455 M98 443 Q110 455 98 467 M122 443 Q110 455 122 467"/>
         <path class="fl" style="--d:1.52s" fill="#ffffff" d="M74 455 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 M140 455 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 M110 421 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 M110 485 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0"/>
         <text class="fl" style="--d:1.55s" x="110" y="516" font-family="Permanent Marker, cursive" font-size="16" fill="#1d4ed8" text-anchor="middle" transform="rotate(-3 110 516)">WARRIORS</text>
-        <!-- confetti left margin -->
-        <path class="fl" style="--d:1.4s" fill="#1d4ed8" d="M60 450 l14 6 -6 14 -14 -6 Z"/>
-        <path class="fl" style="--d:1.45s" fill="#f0b429" d="M150 500 l12 8 -8 12 -12 -8 Z"/>
-        <path class="fl" style="--d:1.5s" fill="#38bdf8" d="M75 580 l13 7 -7 13 -13 -7 Z"/>
-        <path class="fl" style="--d:1.55s" fill="#f0b429" d="M140 620 l12 7 -7 12 -12 -7 Z"/>
+        <!-- 7 nba championships -->
+        <path class="fl" style="--d:1.6s" fill="#f0b429" stroke="#92400e" stroke-width="1.5" d="M39 545 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M61 545 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M83 545 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M105 545 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M127 545 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M149 545 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M171 545 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0"/>
+        <path class="st" style="--d:1.65s" pathLength="100" stroke="#92400e" stroke-width="2" d="M44 550 L44 560 M66 550 L66 560 M88 550 L88 560 M110 550 L110 560 M132 550 L132 560 M154 550 L154 560 M176 550 L176 560"/>
+        <path class="fl" style="--d:1.7s" fill="#92400e" d="M38 560 h12 v4 h-12 Z M60 560 h12 v4 h-12 Z M82 560 h12 v4 h-12 Z M104 560 h12 v4 h-12 Z M126 560 h12 v4 h-12 Z M148 560 h12 v4 h-12 Z M170 560 h12 v4 h-12 Z"/>
+        <text class="fl" style="--d:1.75s" x="110" y="590" font-family="Permanent Marker, cursive" font-size="15" fill="#1d4ed8" text-anchor="middle" transform="rotate(-3 110 590)">7× NBA CHAMPS</text>
+        <path class="fl" style="--d:1.8s" fill="#38bdf8" d="M60 630 l13 7 -7 13 -13 -7 Z"/>
+        <path class="fl" style="--d:1.85s" fill="#f0b429" d="M150 640 l12 7 -7 12 -12 -7 Z"/>
         <!-- pirate right margin (click me) -->
         <g class="char char-pirate">
           <circle class="fl" style="--d:1.6s" cx="1080" cy="210" r="38" fill="#fcd9b8" stroke="#33302b" stroke-width="3"/>
@@ -783,7 +790,15 @@
         <path class="fl" style="--d:2.45s" fill="#33302b" d="M1150 430 L1190 442 L1150 456 Z"/>
         <circle class="fl" style="--d:2.5s" cx="1160" cy="443" r="4" fill="#ffffff"/>
         <!-- silver sparkles right margin -->
-        <path class="st" style="--d:2.55s" pathLength="100" stroke="#9ca3af" stroke-width="3" d="M1030 380 v12 M1024 386 h12 M1150 620 v12 M1144 626 h12"/>
+        <path class="st" style="--d:2.55s" pathLength="100" stroke="#9ca3af" stroke-width="3" d="M1030 380 v12 M1024 386 h12"/>
+        <!-- 3 super bowls -->
+        <ellipse class="fl" style="--d:2.5s" cx="1045" cy="585" rx="9" ry="6" fill="#d6d3d1" stroke="#33302b" stroke-width="1.5"/>
+        <ellipse class="fl" style="--d:2.52s" cx="1080" cy="585" rx="9" ry="6" fill="#d6d3d1" stroke="#33302b" stroke-width="1.5"/>
+        <ellipse class="fl" style="--d:2.54s" cx="1115" cy="585" rx="9" ry="6" fill="#d6d3d1" stroke="#33302b" stroke-width="1.5"/>
+        <path class="st" style="--d:2.56s" pathLength="100" stroke="#33302b" stroke-width="1.5" d="M1041 585 h8 M1076 585 h8 M1111 585 h8"/>
+        <path class="st" style="--d:2.58s" pathLength="100" stroke="#33302b" stroke-width="2" d="M1045 591 L1045 608 M1080 591 L1080 608 M1115 591 L1115 608"/>
+        <path class="fl" style="--d:2.6s" fill="#33302b" d="M1039 608 h12 v4 h-12 Z M1074 608 h12 v4 h-12 Z M1109 608 h12 v4 h-12 Z"/>
+        <text class="fl" style="--d:2.65s" x="1080" y="640" font-family="Permanent Marker, cursive" font-size="15" fill="#33302b" text-anchor="middle" transform="rotate(-3 1080 640)">3× SUPER BOWL</text>
         <!-- Just Win Baby blackletter bottom band -->
         <text class="fl" style="--d:2.9s" x="600" y="678" font-family="UnifrakturMaguntia, serif" font-size="44" fill="#33302b" stroke="#ffffff" stroke-width="1" text-anchor="middle" transform="rotate(-1.5 600 678)">Just Win Baby</text>
         <path class="st" style="--d:3s" pathLength="100" stroke="#9ca3af" stroke-width="3" d="M420 660 v12 M414 666 h12 M780 660 v12 M774 666 h12"/>
@@ -1611,14 +1626,16 @@
     document.body.appendChild(trail);
     const tctx = trail.getContext('2d');
     let pts = [];
+    let trailLive = false;
     function sizeTrail() { trail.width = innerWidth; trail.height = innerHeight; }
     sizeTrail();
     window.addEventListener('resize', sizeTrail);
     document.addEventListener('mousemove', e => {
       pts.push({ x: e.clientX, y: e.clientY, life: 1 });
       if (pts.length > 40) pts.shift();
+      if (!trailLive) requestAnimationFrame(drawTrail);
     });
-    (function drawTrail() {
+    function drawTrail() {
       tctx.clearRect(0, 0, trail.width, trail.height);
       tctx.strokeStyle = 'rgba(51,48,43,0.5)';
       tctx.lineWidth = 2.5;
@@ -1636,8 +1653,9 @@
       tctx.globalAlpha = 1;
       pts.forEach(pt => pt.life -= 0.025);
       pts = pts.filter(pt => pt.life > 0);
-      requestAnimationFrame(drawTrail);
-    })();
+      if (pts.length) requestAnimationFrame(drawTrail);
+      else { tctx.clearRect(0, 0, trail.width, trail.height); trailLive = false; }
+    }
   }
 
   // ---- sign the notebook (localStorage) ----
