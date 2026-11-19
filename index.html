@@ -111,6 +111,18 @@
     .skyline .cow.abducting { animation:abduct 2.2s ease-in-out forwards; }
     @keyframes abduct { 0%{opacity:0; transform:translateY(0) rotate(0)} 12%{opacity:1} 75%{opacity:1; transform:translateY(-115px) rotate(-14deg)} 100%{opacity:0; transform:translateY(-115px) rotate(-14deg)} }
 
+    .char.splashing { animation:splashBounce .6s ease; }
+    @keyframes splashBounce { 0%,100%{transform:scale(1)} 30%{transform:scale(1.15) rotate(-6deg)} 60%{transform:scale(.92) rotate(5deg)} }
+    .char .drop { transform-box:fill-box; transform-origin:center; }
+    .doodle .char.splashing .drop { animation:dropFly .7s ease-out forwards; }
+    @keyframes dropFly { 0%{transform:translate(0,0) scale(1); opacity:1} 100%{transform:translate(var(--dx,0),var(--dy,-40px)) scale(.3); opacity:0} }
+    .char .splash-word { opacity:0; transform-box:fill-box; transform-origin:center; }
+    .char.splashing .splash-word { animation:wordPop .9s ease forwards; }
+    @keyframes wordPop { 0%{opacity:0; transform:translateY(8px) scale(.6)} 20%{opacity:1; transform:translateY(0) scale(1.1)} 75%{opacity:1; transform:translateY(-4px) scale(1)} 100%{opacity:0; transform:translateY(-14px) scale(1)} }
+    .char.arghing { animation:arghAnim .6s ease; }
+    @keyframes arghAnim { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-8deg) scale(1.08)} 55%{transform:rotate(6deg) scale(1.05)} 80%{transform:rotate(-3deg)} }
+    .bio .photo .photo-fallback { position:absolute; top:12px; left:12px; right:12px; bottom:18px; z-index:0; }
+    .bio .photo img { position:relative; z-index:1; }
     /* ---- time of day ---- */
     .skyline .sun { display:none; }
     body.daytime .skyline .sun { display:block; }
@@ -700,7 +712,102 @@
     <div class="face back" aria-hidden="true"></div>
   </section>
 
-  <!-- slide 5: Messi -->
+  <!-- slide 5: Town Teams (Warriors + Raiders) -->
+  <section class="page" data-bg="oakland">
+    <div class="face front">
+      <div class="slide">
+    <div class="doodle" aria-hidden="true">
+      <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet">
+        <!-- DUB NATION top band -->
+        <text class="fl" style="--d:.1s" x="300" y="62" font-family="Permanent Marker, cursive" font-size="46" fill="#1d4ed8" text-anchor="middle" transform="rotate(-2 300 62)">DUB NATION</text>
+        <path class="st" style="--d:.2s" pathLength="100" stroke="#f0b429" stroke-width="4" d="M195 76 Q300 92 405 74"/>
+        <path class="st" style="--d:.3s" pathLength="100" stroke="#1d4ed8" stroke-width="4" d="M230 78 L230 92 M370 76 L370 90"/>
+        <path class="st" style="--d:.35s" pathLength="100" stroke="#f0b429" stroke-width="3" d="M460 40 v12 M454 46 h12"/>
+        <!-- hoop left margin -->
+        <path class="st" style="--d:.5s" pathLength="100" stroke="#33302b" stroke-width="3" d="M75 105 L145 105 L145 155 L75 155 Z"/>
+        <path class="st" style="--d:.6s" pathLength="100" stroke="#33302b" stroke-width="2" d="M95 125 L125 125 L125 145 L95 145 Z"/>
+        <path class="st" style="--d:.7s" pathLength="100" stroke="#ef4444" stroke-width="3.5" d="M92 155 L128 155"/>
+        <path class="st" style="--d:.8s" pathLength="100" stroke="#33302b" stroke-width="1.5" d="M92 155 L100 190 M101 155 L105 190 M110 155 L110 190 M119 155 L115 190 M128 155 L120 190 M100 190 Q110 196 120 190"/>
+        <!-- splash basketball (click me) -->
+        <g class="char char-splash">
+          <circle class="fl" style="--d:1s" cx="110" cy="320" r="42" fill="#fb923c" stroke="#33302b" stroke-width="3"/>
+          <path class="st" style="--d:1.1s" pathLength="100" stroke="#33302b" stroke-width="2.5" d="M110 278 L110 362 M68 320 L152 320 M82 290 Q110 320 82 350 M138 290 Q110 320 138 350"/>
+          <circle class="drop fl" style="--d:1.2s; --dx:-40px; --dy:-30px" cx="60" cy="280" r="4" fill="#38bdf8"/>
+          <circle class="drop fl" style="--d:1.22s; --dx:40px; --dy:-30px" cx="160" cy="280" r="4" fill="#38bdf8"/>
+          <circle class="drop fl" style="--d:1.24s; --dx:-45px; --dy:15px" cx="55" cy="350" r="4" fill="#38bdf8"/>
+          <circle class="drop fl" style="--d:1.26s; --dx:45px; --dy:15px" cx="165" cy="350" r="4" fill="#38bdf8"/>
+          <circle class="drop fl" style="--d:1.28s; --dx:-15px; --dy:-45px" cx="85" cy="265" r="3.5" fill="#38bdf8"/>
+          <circle class="drop fl" style="--d:1.3s; --dx:15px; --dy:-45px" cx="135" cy="265" r="3.5" fill="#38bdf8"/>
+          <g transform="rotate(-4 110 248)"><text class="splash-word" x="110" y="248" font-family="Permanent Marker, cursive" font-size="26" fill="#1d4ed8" text-anchor="middle">SPLASH!</text></g>
+        </g>
+        <!-- confetti left margin -->
+        <path class="fl" style="--d:1.4s" fill="#1d4ed8" d="M60 450 l14 6 -6 14 -14 -6 Z"/>
+        <path class="fl" style="--d:1.45s" fill="#f0b429" d="M150 500 l12 8 -8 12 -12 -8 Z"/>
+        <path class="fl" style="--d:1.5s" fill="#38bdf8" d="M75 580 l13 7 -7 13 -13 -7 Z"/>
+        <path class="fl" style="--d:1.55s" fill="#f0b429" d="M140 620 l12 7 -7 12 -12 -7 Z"/>
+        <!-- pirate right margin (click me) -->
+        <g class="char char-pirate">
+          <circle class="fl" style="--d:1.6s" cx="1080" cy="210" r="38" fill="#fcd9b8" stroke="#33302b" stroke-width="3"/>
+          <path class="fl" style="--d:1.65s" fill="#33302b" d="M1042 210 Q1042 172 1080 172 Q1118 172 1118 210 L1112 200 Q1108 184 1080 184 Q1052 184 1048 200 Z"/>
+          <path class="fl" style="--d:1.7s" fill="#ffffff" d="M1058 190 a2.5 2.5 0 1 0 5 0 a2.5 2.5 0 1 0 -5 0 M1075 186 a2.5 2.5 0 1 0 5 0 a2.5 2.5 0 1 0 -5 0 M1092 188 a2.5 2.5 0 1 0 5 0 a2.5 2.5 0 1 0 -5 0"/>
+          <path class="st" style="--d:1.72s" pathLength="100" stroke="#33302b" stroke-width="2.5" d="M1118 208 L1042 198"/>
+          <circle class="fl" style="--d:1.75s" cx="1068" cy="206" r="7" fill="#33302b"/>
+          <circle class="fl" style="--d:1.78s" cx="1093" cy="206" r="3" fill="#33302b"/>
+          <path class="st" style="--d:1.8s" pathLength="100" stroke="#33302b" stroke-width="2.5" d="M1066 226 Q1080 238 1094 226"/>
+          <circle class="fl" style="--d:1.82s" cx="1056" cy="224" r="4" fill="none" stroke="#f0b429" stroke-width="2"/>
+          <path class="st" style="--d:1.85s" pathLength="100" stroke="#33302b" stroke-width="3" d="M1042 268 L1118 312 M1118 268 L1042 312"/>
+          <path class="st" style="--d:1.88s" pathLength="100" stroke="#33302b" stroke-width="2" d="M1048 276 L1058 288 M1112 276 L1102 288 M1048 304 L1058 292 M1112 304 L1102 292"/>
+        </g>
+        <!-- lowrider with raiders flag right margin -->
+        <path class="fl" style="--d:2s" fill="#9ca3af" stroke="#33302b" stroke-width="3" d="M1005 545 Q1005 522 1030 520 L1085 517 Q1105 482 1132 516 L1152 519 Q1168 521 1168 545 L1168 552 L1005 552 Z"/>
+        <path class="fl" style="--d:2.1s" fill="#33302b" d="M1092 515 Q1107 490 1126 514 L1092 515 Z"/>
+        <circle class="fl" style="--d:2.2s" cx="1035" cy="552" r="16" fill="#33302b"/>
+        <circle class="fl" style="--d:2.25s" cx="1135" cy="552" r="16" fill="#33302b"/>
+        <circle class="fl" style="--d:2.3s" cx="1035" cy="552" r="6" fill="#f0b429"/>
+        <circle class="fl" style="--d:2.35s" cx="1135" cy="552" r="6" fill="#f0b429"/>
+        <path class="st" style="--d:2.4s" pathLength="100" stroke="#33302b" stroke-width="2.5" d="M1150 516 L1150 430"/>
+        <path class="fl" style="--d:2.45s" fill="#33302b" d="M1150 430 L1190 442 L1150 456 Z"/>
+        <circle class="fl" style="--d:2.5s" cx="1160" cy="443" r="4" fill="#ffffff"/>
+        <!-- silver sparkles right margin -->
+        <path class="st" style="--d:2.55s" pathLength="100" stroke="#9ca3af" stroke-width="3" d="M1030 380 v12 M1024 386 h12 M1150 620 v12 M1144 626 h12"/>
+        <!-- Just Win Baby blackletter bottom band -->
+        <text class="fl" style="--d:2.9s" x="600" y="678" font-family="UnifrakturMaguntia, serif" font-size="44" fill="#33302b" stroke="#ffffff" stroke-width="1" text-anchor="middle" transform="rotate(-1.5 600 678)">Just Win Baby</text>
+        <path class="st" style="--d:3s" pathLength="100" stroke="#9ca3af" stroke-width="3" d="M420 660 v12 M414 666 h12 M780 660 v12 M774 666 h12"/>
+      </svg>
+    </div>
+    <div class="bio reveal">
+      <div class="photo">
+        <svg class="photo-fallback" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="40" r="20" fill="#fb923c" stroke="#33302b" stroke-width="2"/>
+          <path d="M50 20 L50 60 M30 40 L70 40 M36 28 Q50 40 36 52 M64 28 Q50 40 64 52" stroke="#33302b" stroke-width="1.5" fill="none"/>
+          <text x="50" y="85" text-anchor="middle" font-family="Caveat, cursive" font-size="11" fill="#9ca3af">add curry.webp</text>
+        </svg>
+        <img src="curry.webp" alt="Stephen Curry" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="text">
+        <h2>Town Teams</h2>
+        <p class="sub">Golden State Warriors · Las Vegas Raiders — both of them still Oakland to me</p>
+        <p class="blurb">
+          I came up watching Steph Curry rewrite basketball from Oracle Arena — the whole
+          building in Oakland shaking every time he pulled up from the logo. Four rings,
+          five straight Finals, and the entire Bay rocking blue and gold. They play in
+          San Francisco now, but everybody knows where the dynasty was built.
+        </p>
+        <p class="blurb">
+          Then there's the silver and black. The Raiders are Oakland's identity in a
+          uniform — the misfits, the bad guys, Just Win Baby. Al Davis moved them away
+          twice, but the Town never gave the team back. You still see the shield on every
+          other corner, and the Black Hole never really left.
+        </p>
+        <p class="closer">Teams leave. The Town doesn't.</p>
+      </div>
+    </div>
+      </div>
+    </div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+
+  <!-- slide 6: Messi -->
   <section class="page" data-bg="oakland">
     <div class="face front">
       <div class="slide">
@@ -1264,7 +1371,7 @@
 <div class="edge edge-r" aria-hidden="true"></div>
 <nav class="pager">
   <button id="prevPage" aria-label="Previous page">&#8249;</button>
-  <span class="num" id="pageNum">1 / 7</span>
+  <span class="num" id="pageNum">1 / 8</span>
   <button id="nextPage" aria-label="Next page">&#8250;</button>
 </nav>
 
@@ -1442,6 +1549,18 @@
     if (thizz && !thizz.classList.contains('winking')) {
       thizz.classList.add('winking');
       setTimeout(() => thizz.classList.remove('winking'), 650);
+      return;
+    }
+    const splash = e.target.closest('.char-splash');
+    if (splash && !splash.classList.contains('splashing')) {
+      splash.classList.add('splashing');
+      setTimeout(() => splash.classList.remove('splashing'), 950);
+      return;
+    }
+    const pirate = e.target.closest('.char-pirate');
+    if (pirate && !pirate.classList.contains('arghing')) {
+      pirate.classList.add('arghing');
+      setTimeout(() => pirate.classList.remove('arghing'), 650);
       return;
     }
   });
