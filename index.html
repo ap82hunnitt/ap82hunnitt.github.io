@@ -116,7 +116,7 @@
     body.daytime .skyline .sun { display:block; }
     body.daytime .skyline .moon, body.daytime .skyline .stars { display:none; }
 
-    /* ---- hyphy mode (konami code) ---- */
+    /* ---- hyphy mode (type "82") ---- */
     body.hyphy { color:#e8e8e8; }
     body.hyphy .face.front {
       background:
@@ -128,13 +128,10 @@
     body.hyphy .pager button { background:rgba(22,24,26,.85); color:#e8e8e8; border-color:rgba(232,232,232,.4); }
     body.hyphy .pager .num { color:#e8e8e8; }
     body.hyphy .bio .photo { background:#222; }
-    body.hyphy .bio .photo .caption { color:#e8e8e8; }
     body.hyphy .signbox label, body.hyphy .signbox input { color:#e8e8e8; }
     body.hyphy .stamps .stamp-label { color:#e8e8e8; }
     body.hyphy .book { animation:hyphyWobble .45s ease-in-out infinite; }
     @keyframes hyphyWobble { 0%,100%{transform:translate(0,0) rotate(0)} 25%{transform:translate(1.5px,-1px) rotate(.15deg)} 50%{transform:translate(-1.5px,1px) rotate(-.15deg)} 75%{transform:translate(1px,1.5px) rotate(.1deg)} }
-    body.hyphy .spokes { animation:spinWheel .7s linear infinite; transform-box:fill-box; transform-origin:center; }
-    @keyframes spinWheel { to { transform:rotate(360deg); } }
     .hyphy-banner { position:fixed; top:18px; left:50%; transform:translateX(-50%) rotate(-2deg); z-index:70;
       font-family:'Permanent Marker', cursive; font-size:34px; color:#e8e8e8; letter-spacing:3px;
       text-shadow:2px 2px 0 #000; display:none; pointer-events:none; }
@@ -144,11 +141,6 @@
     /* ---- pen cursor + ink trail ---- */
     body { cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M4 22 L7 8 L12 3 L15 6 L10 12 Z' fill='%2333302b' stroke='%23faf6ec' stroke-width='1.5'/%3E%3Ccircle cx='7' cy='19' r='1.6' fill='%23faf6ec'/%3E%3C/svg%3E") 4 22, auto; }
     #inkTrail { position:fixed; inset:0; pointer-events:none; z-index:65; }
-
-    /* ---- photo captions ---- */
-    .bio .photo { padding:12px 12px 46px; }
-    .bio .photo .caption { position:absolute; bottom:9px; left:0; right:0; text-align:center;
-      font-family:'Caveat', cursive; font-size:19px; color:#33302b; }
 
     /* ---- sign the notebook ---- */
     .signbox { margin-top:34px; }
@@ -419,7 +411,7 @@
       </svg>
     </div>
     <div class="bio reveal">
-      <div class="photo" data-caption="me, obviously"><img src="me.jpg" alt="Aaron Pena" loading="lazy"></div>
+      <div class="photo"><img src="me.jpg" alt="Aaron Pena" loading="lazy"></div>
       <div class="text">
         <h2>About Me</h2>
         <p class="blurb">
@@ -582,26 +574,37 @@
         <path class="fl" style="--d:1.6s" fill="#ef4444" stroke="#7f1d1d" stroke-width="2" d="M1155 212 h18 v26 h-18 Z"/>
         <path class="fl" style="--d:1.65s" fill="#33302b" d="M1159 204 h10 v8 h-10 Z"/>
         <path class="st" style="--d:1.7s" pathLength="100" stroke="#9ca3af" stroke-width="2" d="M1175 210 L1190 206 M1175 218 L1192 218 M1175 226 L1188 230"/>
-        <!-- mural wall behind the bike -->
+        <!-- mural wall -->
         <path class="st" style="--d:1.7s" pathLength="100" stroke="#92400e" stroke-width="3" d="M30 545 L470 545 L470 695 L30 695 Z"/>
         <path class="st" style="--d:1.75s" pathLength="100" stroke="#c08552" stroke-width="2" d="M30 572 L470 572 M30 599 L470 599 M30 626 L470 626 M30 653 L470 653 M30 675 L470 675"/>
         <path class="st" style="--d:1.8s" pathLength="100" stroke="#c08552" stroke-width="2" d="M115 545 L115 572 M295 545 L295 572 M205 572 L205 599 M385 572 L385 599 M115 599 L115 626 M295 599 L295 626 M205 626 L205 653 M385 626 L385 653 M115 653 L115 675 M295 653 L295 675"/>
         <path class="st" style="--d:1.85s" pathLength="100" stroke="#ef4444" stroke-width="4" d="M52 640 L95 595 M95 595 L80 598 M95 595 L91 610 M57 635 L48 628"/>
         <path class="fl" style="--d:1.9s" fill="#f0b429" stroke="#92400e" stroke-width="2" d="M415 640 L420 612 L433 626 L444 606 L455 626 L466 612 L470 640 Z"/>
-        <!-- scraper bike below photo (in front of the wall) -->
-        <path class="st" style="--d:1.8s" pathLength="100" stroke="#33302b" stroke-width="3.5" d="M88 630 a52 52 0 1 0 104 0 a52 52 0 1 0 -104 0"/>
-        <path class="st" style="--d:1.85s" pathLength="100" stroke="#33302b" stroke-width="3.5" d="M348 630 a52 52 0 1 0 104 0 a52 52 0 1 0 -104 0"/>
-        <path class="fl" style="--d:1.9s" fill="#ef4444" d="M108 630 a32 32 0 1 0 64 0 a32 32 0 1 0 -64 0"/>
-        <path class="fl" style="--d:1.95s" fill="#38bdf8" d="M368 630 a32 32 0 1 0 64 0 a32 32 0 1 0 -64 0"/>
-        <path class="fl" style="--d:2s" fill="#ffffff" d="M126 630 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0 M386 630 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0"/>
-        <path class="st spokes" style="--d:2.05s" pathLength="100" stroke="#33302b" stroke-width="2" d="M140 598 L140 662 M108 630 L172 630 M118 608 L162 652 M162 608 L118 652"/>
-        <path class="st spokes" style="--d:2.05s" pathLength="100" stroke="#33302b" stroke-width="2" d="M400 598 L400 662 M368 630 L432 630 M378 608 L422 652 M422 608 L378 652"/>
-        <path class="st" style="--d:2.15s" pathLength="100" stroke="#33302b" stroke-width="4" d="M290 632 L265 558 M290 632 L400 630 M265 555 L400 630 M290 632 L202 578 M265 555 L198 562 M198 570 L140 630"/>
-        <path class="st" style="--d:2.25s" pathLength="100" stroke="#33302b" stroke-width="3" d="M198 562 L192 545 M180 546 L206 542 M265 555 L262 545 M246 544 q16 -8 32 0"/>
-        <path class="st" style="--d:2.3s" pathLength="100" stroke="#33302b" stroke-width="2.5" d="M290 632 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 M300 632 L316 650 M308 650 L325 650"/>
-        <path class="st" style="--d:2.35s" pathLength="100" stroke="#33302b" stroke-width="1.5" d="M292 626 L400 624"/>
-        <path class="st" style="--d:2.4s" pathLength="100" stroke="#f0b429" stroke-width="2.5" d="M75 575 v10 M70 580 h10 M460 575 v10 M455 580 h10"/>
-        <text class="fl" style="--d:2.45s" x="415" y="690" font-family="Permanent Marker, cursive" font-size="24" fill="#38bdf8" transform="rotate(-5 415 690)">510</text>
+        <!-- graffiti piece on the wall -->
+        <text class="fl" style="--d:1.95s" x="250" y="622" font-family="Permanent Marker, cursive" font-size="54" fill="none" stroke="#33302b" stroke-width="11" stroke-linejoin="round" text-anchor="middle" transform="rotate(-3 250 622)" paint-order="stroke">OAKLAND</text>
+        <text class="fl" style="--d:2.05s" x="250" y="622" font-family="Permanent Marker, cursive" font-size="54" stroke="#ffffff" stroke-width="5" stroke-linejoin="round" text-anchor="middle" transform="rotate(-3 250 622)" paint-order="stroke"><tspan fill="#ef4444">O</tspan><tspan fill="#f0b429">A</tspan><tspan fill="#38bdf8">K</tspan><tspan fill="#4ade80">L</tspan><tspan fill="#d9559c">A</tspan><tspan fill="#fb923c">N</tspan><tspan fill="#a78bfa">D</tspan></text>
+        <path class="fl" style="--d:2.1s" fill="#f0b429" stroke="#92400e" stroke-width="2.5" d="M222 570 L230 548 L242 562 L252 542 L262 562 L274 548 L282 570 Z"/>
+        <path class="fl" style="--d:2.12s" fill="#ef4444" d="M249 566 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0"/>
+        <path class="fl" style="--d:2.14s" fill="#38bdf8" d="M234 566 a2.5 2.5 0 1 0 5 0 a2.5 2.5 0 1 0 -5 0 M262 566 a2.5 2.5 0 1 0 5 0 a2.5 2.5 0 1 0 -5 0"/>
+        <path class="st" style="--d:2.15s" pathLength="100" stroke="#ef4444" stroke-width="5" d="M158 634 q3 12 -1 22"/>
+        <path class="st" style="--d:2.2s" pathLength="100" stroke="#38bdf8" stroke-width="5" d="M252 638 q-3 14 2 26"/>
+        <path class="st" style="--d:2.25s" pathLength="100" stroke="#d9559c" stroke-width="5" d="M342 632 q4 12 0 20"/>
+        <path class="st" style="--d:2.3s" pathLength="100" stroke="#a78bfa" stroke-width="5" d="M138 652 Q250 674 360 650 M360 650 L344 640 M360 650 L346 664"/>
+        <path class="st" style="--d:2.2s" pathLength="100" stroke="#33302b" stroke-width="3" d="M56 608 a32 32 0 1 0 64 0 a32 32 0 1 0 -64 0"/>
+        <path class="fl" style="--d:2.28s" fill="#f0b429" d="M60 608 a28 28 0 1 0 56 0 a28 28 0 1 0 -56 0"/>
+        <text class="fl" style="--d:2.34s" x="88" y="618" font-family="Permanent Marker, cursive" font-size="26" fill="#33302b" text-anchor="middle" transform="rotate(-6 88 608)">510</text>
+        <path class="fl" style="--d:2.2s" fill="#d9559c" stroke="#33302b" stroke-width="2.5" d="M405 612 h44 v50 q0 6 -6 6 h-32 q-6 0 -6 -6 Z"/>
+        <path class="fl" style="--d:2.24s" fill="#33302b" d="M419 600 h16 v12 h-16 Z"/>
+        <path class="fl" style="--d:2.26s" fill="#9ca3af" d="M423 593 h8 v7 h-8 Z"/>
+        <path class="fl" style="--d:2.3s" fill="#33302b" d="M415 624 a2.5 2.5 0 1 0 5 0 a2.5 2.5 0 1 0 -5 0 M434 624 a2.5 2.5 0 1 0 5 0 a2.5 2.5 0 1 0 -5 0"/>
+        <path class="st" style="--d:2.34s" pathLength="100" stroke="#33302b" stroke-width="2.5" d="M419 638 q8 6 16 0"/>
+        <path class="st" style="--d:2.38s" pathLength="100" stroke="#33302b" stroke-width="3" d="M415 668 L413 680 M439 668 L441 680"/>
+        <path class="st" style="--d:2.4s" pathLength="100" stroke="#33302b" stroke-width="3" d="M405 630 Q394 624 388 616 M405 630 Q398 636 392 636"/>
+        <path class="fl" style="--d:2.44s" fill="#a78bfa" d="M402 592 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 M390 586 a2.5 2.5 0 1 0 5 0 a2.5 2.5 0 1 0 -5 0 M380 594 a2 2 0 1 0 4 0 a2 2 0 1 0 -4 0 M386 602 a1.5 1.5 0 1 0 3 0 a1.5 1.5 0 1 0 -3 0"/>
+        <path class="fl" style="--d:2.48s" fill="#ef4444" d="M150 664 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 M164 672 a2 2 0 1 0 4 0 a2 2 0 1 0 -4 0"/>
+        <path class="fl" style="--d:2.52s" fill="#38bdf8" d="M330 666 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 M320 674 a2 2 0 1 0 4 0 a2 2 0 1 0 -4 0"/>
+        <path class="st" style="--d:2.56s" pathLength="100" stroke="#f0b429" stroke-width="3" d="M120 588 v12 M114 594 h12"/>
+        <path class="st" style="--d:2.6s" pathLength="100" stroke="#d9559c" stroke-width="3" d="M372 606 v10 M367 611 h10"/>
         <text class="fl" style="--d:2.5s" x="48" y="538" font-family="Permanent Marker, cursive" font-size="18" fill="#4ade80" transform="rotate(-3 48 538)">Eastside</text>
         <!-- thizz face right strip (click me) -->
         <g class="char char-thizz">
@@ -631,7 +634,7 @@
       </svg>
     </div>
     <div class="bio reveal">
-      <div class="photo" data-caption="the Town, no filter"><img src="oakland.jpg" alt="East Oakland" loading="lazy"></div>
+      <div class="photo"><img src="oakland.jpg" alt="East Oakland" loading="lazy"></div>
       <div class="text">
         <h2>East Oakland</h2>
         <p class="sub">Where I'm from — and a big part of who I am</p>
@@ -872,7 +875,7 @@
       </svg>
     </div>
     <div class="bio reveal">
-      <div class="photo" data-caption="the GOAT himself"><img src="messi.webp" alt="Lionel Messi" loading="lazy"></div>
+      <div class="photo"><img src="messi.webp" alt="Lionel Messi" loading="lazy"></div>
       <div class="text">
         <h2>Lionel "La Pulga" Messi</h2>
         <p class="sub"><span class="count" data-count="8">8</span>× Ballon d'Or winner · Forward · Argentina · Inter Miami CF (#10)</p>
@@ -1031,7 +1034,7 @@
       </svg>
     </div>
     <div class="bio reveal">
-      <div class="photo" data-caption="El Matador"><img src="ilia.webp" alt="Ilia Topuria" loading="lazy"></div>
+      <div class="photo"><img src="ilia.webp" alt="Ilia Topuria" loading="lazy"></div>
       <div class="text">
         <h2>Ilia "El Matador" Topuria</h2>
         <p class="sub">Former two-division UFC champion · <span class="count" data-count="17">17</span>-1 · Georgian-Spanish · Lightweight</p>
@@ -1443,21 +1446,21 @@
     }
   });
 
-  // ---- hyphy mode via konami code ----
-  const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-  let kpos = 0;
+  // ---- hyphy mode: type "82" ----
+  let codeBuf = '';
   document.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT') return;
-    kpos = (e.key === konami[kpos]) ? kpos + 1 : (e.key === konami[0] ? 1 : 0);
-    if (kpos === konami.length) {
-      kpos = 0;
+    if (e.key === 'Escape') document.body.classList.remove('hyphy');
+    if (e.key !== '8' && e.key !== '2') { codeBuf = ''; return; }
+    codeBuf = (codeBuf + e.key).slice(-2);
+    if (codeBuf === '82') {
+      codeBuf = '';
       document.body.classList.toggle('hyphy');
       if (document.body.classList.contains('hyphy')) {
         localStorage.setItem('stn_hyphy', '1');
         earnStamp('hyphy');
       }
     }
-    if (e.key === 'Escape') document.body.classList.remove('hyphy');
   });
   const hyphyBanner = document.createElement('div');
   hyphyBanner.className = 'hyphy-banner';
@@ -1503,14 +1506,6 @@
       requestAnimationFrame(drawTrail);
     })();
   }
-
-  // ---- photo captions ----
-  document.querySelectorAll('.bio .photo[data-caption]').forEach(ph => {
-    const cap = document.createElement('div');
-    cap.className = 'caption';
-    cap.textContent = ph.dataset.caption;
-    ph.appendChild(cap);
-  });
 
   // ---- sign the notebook (localStorage) ----
   const signInput = document.getElementById('signInput');
