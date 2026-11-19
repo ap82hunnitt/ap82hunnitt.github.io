@@ -103,6 +103,8 @@
     .deco svg { width:100%; height:100%; display:block; }
     .deco .sway { transform-box:fill-box; transform-origin:50% 100%; animation:sway 5s ease-in-out infinite alternate; }
     @keyframes sway { from { transform:rotate(-2.5deg); } to { transform:rotate(2.5deg); } }
+    .deco .float { animation:float 5.5s ease-in-out infinite alternate; }
+    @keyframes float { from { transform:translateY(-5px); } to { transform:translateY(5px); } }
     @media (max-width:1100px) { .deco { opacity:.4; } }
 
     .bio .closer { margin-top:18px; opacity:.7; font-size:15px; line-height:1.6; }
@@ -130,6 +132,7 @@
       #intro .typed .caret { animation:none; }
       #intro h1 { animation:none; background-size:100% 14px; }
       .deco .sway { animation:none; }
+      .deco .float { animation:none; }
     }
 
     /* ---- phones ---- */
@@ -329,7 +332,7 @@
   </section>
 
   <!-- slide 4: Sports divider -->
-  <section class="slide divider" data-bg="sports">
+  <section class="slide divider" data-bg="oakland">
     <div class="reveal">
       <h2>Sports</h2>
       <p>Some of my favorite athletes — heavily regarded as the best in the world, and they symbolize what it means to be great.</p>
@@ -337,7 +340,138 @@
   </section>
 
   <!-- slide 5: Messi -->
-  <section class="slide" data-bg="sports">
+  <section class="slide" data-bg="oakland">
+    <div class="deco deco-left" aria-hidden="true">
+      <svg viewBox="0 0 180 700" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <path id="messi-star-l" d="M0 -6 L1.4 -1.4 L6 0 L1.4 1.4 L0 6 L-1.4 1.4 L-6 0 L-1.4 -1.4 Z"/>
+          <clipPath id="messi-ball-clip"><circle r="34"/></clipPath>
+        </defs>
+        <!-- Argentina flag -->
+        <g transform="translate(90,95)"><g class="float">
+          <path d="M-45 -30 Q 0 -37 45 -30 L 45 -10 Q 0 -17 -45 -10 Z" fill="#74acdf"/>
+          <path d="M-45 -10 Q 0 -17 45 -10 L 45 10 Q 0 3 -45 10 Z" fill="#ffffff"/>
+          <path d="M-45 10 Q 0 3 45 10 L 45 30 Q 0 23 -45 30 Z" fill="#74acdf"/>
+          <g fill="#f6b40e">
+            <circle cx="0" cy="-3" r="6"/>
+            <g stroke="#f6b40e" stroke-width="2.2" stroke-linecap="round">
+              <line x1="0" y1="-12" x2="0" y2="-15.5"/>
+              <line x1="0" y1="6" x2="0" y2="9.5"/>
+              <line x1="-9" y1="-3" x2="-12.5" y2="-3"/>
+              <line x1="9" y1="-3" x2="12.5" y2="-3"/>
+              <line x1="-6.4" y1="-9.4" x2="-8.9" y2="-11.9"/>
+              <line x1="6.4" y1="-9.4" x2="8.9" y2="-11.9"/>
+              <line x1="-6.4" y1="3.4" x2="-8.9" y2="5.9"/>
+              <line x1="6.4" y1="3.4" x2="8.9" y2="5.9"/>
+            </g>
+          </g>
+        </g></g>
+        <!-- soccer ball -->
+        <g transform="translate(90,300)"><g class="float" style="animation-delay:-1.4s">
+          <path d="M-48 -10 q -8 10 0 20" stroke="#f0b429" stroke-width="3" fill="none" stroke-linecap="round" opacity=".55"/>
+          <path d="M-56 -2 q -5 6 0 12" stroke="#f0b429" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".35"/>
+          <circle r="34" fill="#ffffff" stroke="#1a1a1a" stroke-width="2.5"/>
+          <g clip-path="url(#messi-ball-clip)">
+            <g fill="#1a1a1a">
+              <polygon points="0,-13 12.36,-4.02 7.64,10.52 -7.64,10.52 -12.36,-4.02"/>
+              <polygon points="0,-13 12.36,-4.02 7.64,10.52 -7.64,10.52 -12.36,-4.02" transform="translate(0,-34)"/>
+              <polygon points="0,-13 12.36,-4.02 7.64,10.52 -7.64,10.52 -12.36,-4.02" transform="translate(32.33,-10.51) rotate(72)"/>
+              <polygon points="0,-13 12.36,-4.02 7.64,10.52 -7.64,10.52 -12.36,-4.02" transform="translate(19.99,27.51) rotate(144)"/>
+              <polygon points="0,-13 12.36,-4.02 7.64,10.52 -7.64,10.52 -12.36,-4.02" transform="translate(-19.99,27.51) rotate(216)"/>
+              <polygon points="0,-13 12.36,-4.02 7.64,10.52 -7.64,10.52 -12.36,-4.02" transform="translate(-32.33,-10.51) rotate(288)"/>
+            </g>
+            <g stroke="#1a1a1a" stroke-width="2.5">
+              <line x1="0" y1="-13" x2="0" y2="-21"/>
+              <line x1="12.36" y1="-4.02" x2="19.97" y2="-6.48"/>
+              <line x1="7.64" y1="10.52" x2="12.34" y2="16.99"/>
+              <line x1="-7.64" y1="10.52" x2="-12.34" y2="16.99"/>
+              <line x1="-12.36" y1="-4.02" x2="-19.97" y2="-6.48"/>
+            </g>
+          </g>
+        </g></g>
+        <!-- crown -->
+        <g transform="translate(90,490)"><g class="float" style="animation-delay:-2.8s">
+          <path d="M-32 18 L-36 -14 L-16 2 L0 -20 L16 2 L36 -14 L32 18 Z" fill="#f0b429" stroke="#92400e" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="-34" y="18" width="68" height="12" rx="4" fill="#f0b429" stroke="#92400e" stroke-width="2.5"/>
+          <circle cx="-36" cy="-18" r="4.5" fill="#f0b429" stroke="#92400e" stroke-width="2"/>
+          <circle cx="0" cy="-24" r="4.5" fill="#f0b429" stroke="#92400e" stroke-width="2"/>
+          <circle cx="36" cy="-18" r="4.5" fill="#f0b429" stroke="#92400e" stroke-width="2"/>
+          <circle cx="-12" cy="24" r="2.8" fill="#d9559c"/>
+          <circle cx="0" cy="24" r="2.8" fill="#38bdf8"/>
+          <circle cx="12" cy="24" r="2.8" fill="#4ade80"/>
+        </g></g>
+        <!-- sparkles -->
+        <use href="#messi-star-l" transform="translate(28,190) scale(.8)" fill="#f0b429" opacity=".6"/>
+        <use href="#messi-star-l" transform="translate(152,235) scale(.6)" fill="#f0b429" opacity=".45"/>
+        <use href="#messi-star-l" transform="translate(36,395) scale(.7)" fill="#f0b429" opacity=".55"/>
+        <use href="#messi-star-l" transform="translate(150,455) scale(.9)" fill="#f0b429" opacity=".6"/>
+        <use href="#messi-star-l" transform="translate(90,585) scale(.6)" fill="#f0b429" opacity=".45"/>
+        <use href="#messi-star-l" transform="translate(32,645) scale(.8)" fill="#f0b429" opacity=".55"/>
+        <use href="#messi-star-l" transform="translate(148,655) scale(.5)" fill="#f0b429" opacity=".4"/>
+      </svg>
+    </div>
+    <div class="deco deco-right" aria-hidden="true">
+      <svg viewBox="0 0 200 700" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <path id="messi-star-r" d="M0 -6 L1.4 -1.4 L6 0 L1.4 1.4 L0 6 L-1.4 1.4 L-6 0 L-1.4 -1.4 Z"/>
+          <clipPath id="messi-fcb-clip">
+            <path d="M-33 -42 h66 v26 q0 32 -33 54 q-33 -22 -33 -54 z"/>
+          </clipPath>
+        </defs>
+        <!-- FC Barcelona badge -->
+        <g transform="translate(100,115)"><g class="float" style="animation-delay:-2.2s">
+          <path d="M-33 -42 h66 v26 q0 32 -33 54 q-33 -22 -33 -54 z" fill="#004d98"/>
+          <g clip-path="url(#messi-fcb-clip)">
+            <rect x="-33" y="-42" width="33" height="26" fill="#ffffff"/>
+            <path d="M-16.5 -42 v26 M-33 -29 h33" stroke="#c8102e" stroke-width="4.5"/>
+            <rect x="0" y="-42" width="33" height="26" fill="#fcdd09"/>
+            <path d="M0 -38.4 h33 M0 -31.9 h33 M0 -25.4 h33 M0 -18.9 h33" stroke="#c8102e" stroke-width="3.2"/>
+            <rect x="-33" y="-16" width="66" height="60" fill="#004d98"/>
+            <rect x="-19" y="-16" width="14" height="60" fill="#a50044"/>
+            <rect x="5" y="-16" width="14" height="60" fill="#a50044"/>
+            <circle cx="0" cy="12" r="9.5" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.8"/>
+            <polygon points="0,-3.5 3.33,-1.08 2.06,2.83 -2.06,2.83 -3.33,-1.08" transform="translate(0,12)" fill="#1a1a1a"/>
+          </g>
+          <path d="M-33 -42 h66 v26 q0 32 -33 54 q-33 -22 -33 -54 z" fill="none" stroke="#edbb00" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M-33 -16 h66 M0 -42 v26" stroke="#edbb00" stroke-width="2"/>
+        </g></g>
+        <!-- goat -->
+        <g transform="translate(100,330)"><g class="float" style="animation-delay:-1.8s">
+          <path d="M-14 -22 C -30 -34, -44 -28, -46 -12 C -38 -20, -26 -20, -16 -12 Z" fill="#c8a06e" stroke="#8a6238" stroke-width="2"/>
+          <path d="M14 -22 C 30 -34, 44 -28, 46 -12 C 38 -20, 26 -20, 16 -12 Z" fill="#c8a06e" stroke="#8a6238" stroke-width="2"/>
+          <ellipse cx="-24" cy="-2" rx="7" ry="13" fill="#e3d7bd" stroke="#b8a888" stroke-width="2" transform="rotate(-24 -24 -2)"/>
+          <ellipse cx="24" cy="-2" rx="7" ry="13" fill="#e3d7bd" stroke="#b8a888" stroke-width="2" transform="rotate(24 24 -2)"/>
+          <ellipse cx="0" cy="0" rx="21" ry="26" fill="#f2ead8" stroke="#b8a888" stroke-width="2"/>
+          <ellipse cx="0" cy="13" rx="12" ry="9" fill="#e3d7bd"/>
+          <path d="M-4 24 L0 40 L4 24 Z" fill="#f2ead8" stroke="#b8a888" stroke-width="2"/>
+          <circle cx="-8" cy="-5" r="2.6" fill="#1a1a1a"/>
+          <circle cx="8" cy="-5" r="2.6" fill="#1a1a1a"/>
+          <circle cx="-4" cy="12" r="1.6" fill="#1a1a1a"/>
+          <circle cx="4" cy="12" r="1.6" fill="#1a1a1a"/>
+        </g></g>
+        <text x="100" y="392" font-family="Permanent Marker, cursive" font-size="30" fill="#f0b429" opacity=".85" text-anchor="middle" transform="rotate(-4 100 392)">GOAT</text>
+        <!-- lion -->
+        <g transform="translate(100,540)"><g class="float" style="animation-delay:-3.2s">
+          <polygon points="0,-36 7,-26.1 18,-31.2 19.1,-19.1 31.2,-18 26.1,-7 36,0 26.1,7 31.2,18 19.1,19.1 18,31.2 7,26.1 0,36 -7,26.1 -18,31.2 -19.1,19.1 -31.2,18 -26.1,7 -36,0 -26.1,-7 -31.2,-18 -19.1,-19.1 -18,-31.2 -7,-26.1" fill="#b45309"/>
+          <circle cx="-15" cy="-15" r="7" fill="#fbbf24" stroke="#b45309" stroke-width="2"/>
+          <circle cx="15" cy="-15" r="7" fill="#fbbf24" stroke="#b45309" stroke-width="2"/>
+          <circle r="21" fill="#fbbf24"/>
+          <circle cx="-7.5" cy="-4" r="2.6" fill="#1a1a1a"/>
+          <circle cx="7.5" cy="-4" r="2.6" fill="#1a1a1a"/>
+          <ellipse cx="0" cy="9" rx="10" ry="7.5" fill="#fde68a"/>
+          <path d="M-3.5 5.5 Q0 4 3.5 5.5 L2 9 L-2 9 Z" fill="#1a1a1a"/>
+          <path d="M0 9 L0 12 M-3 12 Q0 15 3 12" stroke="#1a1a1a" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </g></g>
+        <!-- sparkles -->
+        <use href="#messi-star-r" transform="translate(30,205) scale(.7)" fill="#f0b429" opacity=".5"/>
+        <use href="#messi-star-r" transform="translate(172,250) scale(.8)" fill="#f0b429" opacity=".6"/>
+        <use href="#messi-star-r" transform="translate(38,445) scale(.6)" fill="#f0b429" opacity=".45"/>
+        <use href="#messi-star-r" transform="translate(168,480) scale(.7)" fill="#f0b429" opacity=".55"/>
+        <use href="#messi-star-r" transform="translate(100,645) scale(.8)" fill="#f0b429" opacity=".55"/>
+        <use href="#messi-star-r" transform="translate(30,655) scale(.5)" fill="#f0b429" opacity=".4"/>
+        <use href="#messi-star-r" transform="translate(170,660) scale(.6)" fill="#f0b429" opacity=".45"/>
+      </svg>
+    </div>
     <div class="bio reveal">
       <div class="photo"><img src="messi.webp" alt="Lionel Messi" loading="lazy"></div>
       <div class="text">
@@ -357,7 +491,121 @@
   </section>
 
   <!-- slide 6: Topuria -->
-  <section class="slide" data-bg="sports">
+  <section class="slide" data-bg="oakland">
+    <div class="deco deco-left" aria-hidden="true">
+      <svg viewBox="0 0 180 700" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <path id="topuria-star-l" d="M0 -6 L1.4 -1.4 L6 0 L1.4 1.4 L0 6 L-1.4 1.4 L-6 0 L-1.4 -1.4 Z"/>
+          <path id="topuria-drip-l" d="M0 -7 C 2.6 -3.4, 3.4 -1.2, 3.4 0.6 C 3.4 2.8, 1.9 4.4, 0 4.4 C -1.9 4.4, -3.4 2.8, -3.4 0.6 C -3.4 -1.2, -2.6 -3.4, 0 -7 Z"/>
+          <g id="topuria-glove">
+            <rect x="8" y="-9" width="16" height="22" rx="5" fill="#7f1d1d" stroke="#450a0a" stroke-width="1.8"/>
+            <path d="M10 -13 C -2 -22, -18 -17, -22 -5 C -25 5, -19 14, -9 16 C 1 18, 9 12, 11 4 L 11 -11 Z" fill="#dc2626" stroke="#450a0a" stroke-width="1.8"/>
+            <path d="M-19 2 C -26 1, -27 9, -20 12 C -14 14, -9 11, -10 6 C -11 3, -15 2.5, -19 2 Z" fill="#ef4444" stroke="#450a0a" stroke-width="1.8"/>
+            <path d="M-16 -9 Q -6 -14 3 -9" stroke="#450a0a" stroke-width="1.6" fill="none"/>
+          </g>
+        </defs>
+        <!-- flag of Spain -->
+        <g transform="translate(90,95)"><g class="float">
+          <path d="M-45 -20 Q 0 -27 45 -20 L 45 -10 Q 0 -17 -45 -10 Z" fill="#aa151b"/>
+          <path d="M-45 -10 Q 0 -17 45 -10 L 45 10 Q 0 3 -45 10 Z" fill="#f1bf00"/>
+          <path d="M-45 10 Q 0 3 45 10 L 45 20 Q 0 13 -45 20 Z" fill="#aa151b"/>
+        </g></g>
+        <!-- MMA gloves -->
+        <g transform="translate(90,300)"><g class="float" style="animation-delay:-1.4s">
+          <use href="#topuria-glove" transform="translate(-35,0)"/>
+          <use href="#topuria-glove" transform="translate(35,0) scale(-1,1)"/>
+          <use href="#topuria-star-l" transform="translate(0,-2) scale(.9)" fill="#f0b429" opacity=".9"/>
+        </g></g>
+        <!-- UFC belt 1 -->
+        <g transform="translate(90,490)"><g class="float" style="animation-delay:-2.8s">
+          <rect x="-52" y="-14" width="104" height="28" rx="10" fill="#3d2b1f" stroke="#1f150e" stroke-width="2"/>
+          <rect x="-48" y="-10" width="96" height="20" rx="7" fill="none" stroke="#5d4634" stroke-width="1.2" stroke-dasharray="3 2"/>
+          <circle cx="-34" cy="0" r="9" fill="#f0b429" stroke="#92400e" stroke-width="1.8"/>
+          <circle cx="34" cy="0" r="9" fill="#f0b429" stroke="#92400e" stroke-width="1.8"/>
+          <polygon points="15.7,6.5 6.5,15.7 -6.5,15.7 -15.7,6.5 -15.7,-6.5 -6.5,-15.7 6.5,-15.7 15.7,-6.5" fill="#f0b429" stroke="#92400e" stroke-width="2"/>
+          <polygon points="11.5,4.8 4.8,11.5 -4.8,11.5 -11.5,4.8 -11.5,-4.8 -4.8,-11.5 4.8,-11.5 11.5,-4.8" fill="none" stroke="#92400e" stroke-width="1.5"/>
+          <path d="M0 -7 L2.2 -2.2 L7 0 L2.2 2.2 L0 7 L-2.2 2.2 L-7 0 L-2.2 -2.2 Z" fill="#92400e"/>
+        </g></g>
+        <!-- blood tints -->
+        <use href="#topuria-drip-l" transform="translate(30,190) scale(.9)" fill="#b91c1c" opacity=".55"/>
+        <use href="#topuria-drip-l" transform="translate(152,235) scale(.6) rotate(40)" fill="#b91c1c" opacity=".4"/>
+        <use href="#topuria-drip-l" transform="translate(36,395) scale(.7) rotate(-25)" fill="#b91c1c" opacity=".5"/>
+        <use href="#topuria-drip-l" transform="translate(150,455) scale(.8) rotate(15)" fill="#b91c1c" opacity=".45"/>
+        <use href="#topuria-drip-l" transform="translate(90,585) scale(.6) rotate(-40)" fill="#b91c1c" opacity=".4"/>
+        <use href="#topuria-drip-l" transform="translate(32,645) scale(.85)" fill="#b91c1c" opacity=".5"/>
+        <use href="#topuria-drip-l" transform="translate(148,655) scale(.5) rotate(30)" fill="#b91c1c" opacity=".35"/>
+      </svg>
+    </div>
+    <div class="deco deco-right" aria-hidden="true">
+      <svg viewBox="0 0 200 700" preserveAspectRatio="xMidYMax meet">
+        <defs>
+          <path id="topuria-star-r" d="M0 -6 L1.4 -1.4 L6 0 L1.4 1.4 L0 6 L-1.4 1.4 L-6 0 L-1.4 -1.4 Z"/>
+          <path id="topuria-drip-r" d="M0 -7 C 2.6 -3.4, 3.4 -1.2, 3.4 0.6 C 3.4 2.8, 1.9 4.4, 0 4.4 C -1.9 4.4, -3.4 2.8, -3.4 0.6 C -3.4 -1.2, -2.6 -3.4, 0 -7 Z"/>
+          <clipPath id="topuria-geo-clip">
+            <path d="M-45 -20 Q 0 -27 45 -20 L 45 20 Q 0 13 -45 20 Z"/>
+          </clipPath>
+        </defs>
+        <!-- flag of Georgia -->
+        <g transform="translate(100,115)"><g class="float" style="animation-delay:-2.2s">
+          <path d="M-45 -20 Q 0 -27 45 -20 L 45 20 Q 0 13 -45 20 Z" fill="#ffffff" stroke="#d6d3d1" stroke-width="1.5"/>
+          <g clip-path="url(#topuria-geo-clip)" fill="#ff0000">
+            <rect x="-7" y="-30" width="14" height="60"/>
+            <path d="M-50 -10.5 Q 0 -17.5 50 -10.5 L 50 3.5 Q 0 -3.5 -50 3.5 Z"/>
+          </g>
+          <g fill="#ff0000">
+            <path d="M-1.2 -4 h2.4 v2.8 h2.8 v2.4 h-2.8 v2.8 h-2.4 v-2.8 h-2.8 v-2.4 h2.8 Z" transform="translate(-23,-18)"/>
+            <path d="M-1.2 -4 h2.4 v2.8 h2.8 v2.4 h-2.8 v2.8 h-2.4 v-2.8 h-2.8 v-2.4 h2.8 Z" transform="translate(23,-18)"/>
+            <path d="M-1.2 -4 h2.4 v2.8 h2.8 v2.4 h-2.8 v2.8 h-2.4 v-2.8 h-2.8 v-2.4 h2.8 Z" transform="translate(-23,8)"/>
+            <path d="M-1.2 -4 h2.4 v2.8 h2.8 v2.4 h-2.8 v2.8 h-2.4 v-2.8 h-2.8 v-2.4 h2.8 Z" transform="translate(23,8)"/>
+          </g>
+        </g></g>
+        <!-- bull -->
+        <g transform="translate(100,330)"><g class="float" style="animation-delay:-1.6s">
+          <path d="M-20 -16 C -32 -18, -42 -24, -46 -34 C -46 -22, -38 -12, -24 -8 Z" fill="#e8d5b5" stroke="#a8895d" stroke-width="2"/>
+          <path d="M20 -16 C 32 -18, 42 -24, 46 -34 C 46 -22, 38 -12, 24 -8 Z" fill="#e8d5b5" stroke="#a8895d" stroke-width="2"/>
+          <ellipse cx="-26" cy="-2" rx="6" ry="10" fill="#3d2b1f" transform="rotate(-30 -26 -2)"/>
+          <ellipse cx="26" cy="-2" rx="6" ry="10" fill="#3d2b1f" transform="rotate(30 26 -2)"/>
+          <path d="M-22 -18 C -30 -2, -24 14, -14 22 L 14 22 C 24 14, 30 -2, 22 -18 C 10 -26, -10 -26, -22 -18 Z" fill="#4a3728"/>
+          <path d="M-10 -24 Q 0 -32 10 -24 Q 5 -20 0 -22 Q -5 -20 -10 -24 Z" fill="#3d2b1f"/>
+          <path d="M-15 -12 L-5 -9 M15 -12 L5 -9" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="-10" cy="-6" r="2.8" fill="#fff"/><circle cx="-10" cy="-6" r="1.5" fill="#1a1a1a"/>
+          <circle cx="10" cy="-6" r="2.8" fill="#fff"/><circle cx="10" cy="-6" r="1.5" fill="#1a1a1a"/>
+          <ellipse cx="0" cy="14" rx="13" ry="9" fill="#5d4634"/>
+          <circle cx="-5" cy="13" r="2" fill="#1a1a1a"/>
+          <circle cx="5" cy="13" r="2" fill="#1a1a1a"/>
+          <path d="M-4 22 a4.5 4.5 0 1 0 9 0" fill="none" stroke="#f0b429" stroke-width="2.5"/>
+        </g></g>
+        <text x="100" y="392" font-family="Permanent Marker, cursive" font-size="26" fill="#f0b429" opacity=".85" text-anchor="middle" transform="rotate(-4 100 392)">EL MATADOR</text>
+        <!-- cup of tea -->
+        <g transform="translate(100,540)"><g class="float" style="animation-delay:-3.2s">
+          <path d="M-8 -26 q -4 -6 0 -12 q 4 -6 0 -12" stroke="#ffffff" stroke-width="2.5" fill="none" opacity=".5" stroke-linecap="round"/>
+          <path d="M4 -28 q -4 -6 0 -12 q 4 -6 0 -10" stroke="#ffffff" stroke-width="2.5" fill="none" opacity=".4" stroke-linecap="round"/>
+          <ellipse cx="0" cy="18" rx="26" ry="6" fill="#f5f5f4" stroke="#d6d3d1" stroke-width="1.5"/>
+          <path d="M-18 -8 L -15 14 Q 0 20 15 14 L 18 -8 Z" fill="#ffffff" stroke="#d6d3d1" stroke-width="2"/>
+          <ellipse cx="0" cy="-8" rx="18" ry="4.5" fill="#b45309"/>
+          <path d="M15 0 q 12 -2 10 8 q -2 8 -12 6" fill="none" stroke="#d6d3d1" stroke-width="3"/>
+          <path d="M10 -8 q 4 6 3 12" stroke="#f0b429" stroke-width="1.5" fill="none"/>
+          <rect x="11" y="4" width="9" height="7" rx="1.5" fill="#f0b429" transform="rotate(8 15 7)"/>
+        </g></g>
+        <!-- UFC belt 2 -->
+        <g transform="translate(100,640)"><g class="float" style="animation-delay:-4s">
+          <rect x="-52" y="-14" width="104" height="28" rx="10" fill="#3d2b1f" stroke="#1f150e" stroke-width="2"/>
+          <rect x="-48" y="-10" width="96" height="20" rx="7" fill="none" stroke="#5d4634" stroke-width="1.2" stroke-dasharray="3 2"/>
+          <circle cx="-34" cy="0" r="9" fill="#f0b429" stroke="#92400e" stroke-width="1.8"/>
+          <circle cx="34" cy="0" r="9" fill="#f0b429" stroke="#92400e" stroke-width="1.8"/>
+          <polygon points="15.7,6.5 6.5,15.7 -6.5,15.7 -15.7,6.5 -15.7,-6.5 -6.5,-15.7 6.5,-15.7 15.7,-6.5" fill="#f0b429" stroke="#92400e" stroke-width="2"/>
+          <polygon points="11.5,4.8 4.8,11.5 -4.8,11.5 -11.5,4.8 -11.5,-4.8 -4.8,-11.5 4.8,-11.5 11.5,-4.8" fill="none" stroke="#92400e" stroke-width="1.5"/>
+          <path d="M0 -7 L2.2 -2.2 L7 0 L2.2 2.2 L0 7 L-2.2 2.2 L-7 0 L-2.2 -2.2 Z" fill="#92400e"/>
+        </g></g>
+        <!-- blood tints -->
+        <use href="#topuria-drip-r" transform="translate(30,205) scale(.7) rotate(-20)" fill="#b91c1c" opacity=".45"/>
+        <use href="#topuria-drip-r" transform="translate(172,250) scale(.8) rotate(25)" fill="#b91c1c" opacity=".5"/>
+        <use href="#topuria-drip-r" transform="translate(38,445) scale(.6) rotate(-35)" fill="#b91c1c" opacity=".4"/>
+        <use href="#topuria-drip-r" transform="translate(168,480) scale(.75) rotate(10)" fill="#b91c1c" opacity=".45"/>
+        <use href="#topuria-drip-r" transform="translate(30,600) scale(.55) rotate(20)" fill="#b91c1c" opacity=".35"/>
+        <use href="#topuria-drip-r" transform="translate(170,690) scale(.6) rotate(-15)" fill="#b91c1c" opacity=".4"/>
+      </svg>
+    </div>
     <div class="bio reveal">
       <div class="photo"><img src="ilia.webp" alt="Ilia Topuria" loading="lazy"></div>
       <div class="text">
