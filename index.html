@@ -72,7 +72,7 @@
     .edge-l { left:0; } .edge-r { right:0; }
 
     /* hand-drawn skyline that sketches itself in */
-    .slide > .skyline { position:absolute; left:0; right:0; bottom:0; height:42%; z-index:0; pointer-events:none; }
+    .slide > .skyline { position:absolute; left:0; right:0; bottom:0; height:96%; z-index:0; pointer-events:none; opacity:.85; }
     .skyline svg { width:100%; height:100%; display:block; }
     .skyline .st { fill:none; stroke:#33302b; stroke-width:3; stroke-linecap:round; stroke-linejoin:round;
       stroke-dasharray:101; stroke-dashoffset:101; }
@@ -733,104 +733,108 @@
 </div>
 
 <template id="skyline-tpl">
-<svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMax meet">
+<svg viewBox="0 0 1200 620" preserveAspectRatio="xMidYMax meet">
   <!-- Oakland hills -->
-  <path class="st thin" style="--d:0s" pathLength="100" d="M0 332 C 120 316, 260 308, 400 322 C 540 336, 660 314, 800 324 C 920 332, 1060 318, 1200 328"/>
-  <path class="st thin" style="--d:.2s" pathLength="100" d="M40 344 C 200 332, 420 340, 640 334 C 860 328, 1020 338, 1180 332"/>
+  <path class="st thin" style="--d:0s" pathLength="100" d="M0 532 C 120 516, 260 508, 400 522 C 540 536, 660 514, 800 524 C 920 532, 1060 518, 1200 528"/>
+  <path class="st thin" style="--d:.2s" pathLength="100" d="M40 544 C 200 532, 420 540, 640 534 C 860 528, 1020 538, 1180 532"/>
   <!-- building 1 -->
-  <path class="st" style="--d:.4s" pathLength="100" d="M60 400 L63 252 L138 250 L141 398"/>
-  <path class="st thin" style="--d:.55s" pathLength="100" d="M78 270 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:.6s" pathLength="100" d="M100 270 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:.65s" pathLength="100" d="M78 300 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:.7s" pathLength="100" d="M100 300 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:.75s" pathLength="100" d="M78 330 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:.8s" pathLength="100" d="M100 330 h14 v14 h-14 Z"/>
+  <path class="st" style="--d:.4s" pathLength="100" d="M60 600 L63 400 L138 398 L141 598"/>
+  <path class="st thin" style="--d:.55s" pathLength="100" d="M78 430 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:.6s" pathLength="100" d="M100 430 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:.65s" pathLength="100" d="M78 470 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:.7s" pathLength="100" d="M100 470 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:.75s" pathLength="100" d="M78 510 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:.8s" pathLength="100" d="M100 510 h14 v16 h-14 Z"/>
   <!-- building 2 with antenna -->
-  <path class="st" style="--d:.9s" pathLength="100" d="M160 400 L162 202 L210 200 L212 400"/>
-  <path class="st thin" style="--d:1.05s" pathLength="100" d="M186 200 L184 162"/>
-  <path class="st thin" style="--d:1.1s" pathLength="100" d="M178 176 L192 174"/>
-  <path class="st thin" style="--d:1.15s" pathLength="100" d="M172 230 h12 v12 h-12 Z"/>
-  <path class="st thin" style="--d:1.2s" pathLength="100" d="M192 230 h12 v12 h-12 Z"/>
-  <path class="st thin" style="--d:1.25s" pathLength="100" d="M172 270 h12 v12 h-12 Z"/>
-  <path class="st thin" style="--d:1.3s" pathLength="100" d="M192 270 h12 v12 h-12 Z"/>
+  <path class="st" style="--d:.9s" pathLength="100" d="M160 600 L162 330 L210 328 L212 600"/>
+  <path class="st thin" style="--d:1.05s" pathLength="100" d="M186 328 L184 270"/>
+  <path class="st thin" style="--d:1.1s" pathLength="100" d="M178 296 L192 294"/>
+  <path class="st thin" style="--d:1.15s" pathLength="100" d="M172 370 h12 v14 h-12 Z"/>
+  <path class="st thin" style="--d:1.2s" pathLength="100" d="M192 370 h12 v14 h-12 Z"/>
+  <path class="st thin" style="--d:1.25s" pathLength="100" d="M172 420 h12 v14 h-12 Z"/>
+  <path class="st thin" style="--d:1.3s" pathLength="100" d="M192 420 h12 v14 h-12 Z"/>
+  <path class="st thin" style="--d:1.35s" pathLength="100" d="M172 470 h12 v14 h-12 Z"/>
+  <path class="st thin" style="--d:1.4s" pathLength="100" d="M192 470 h12 v14 h-12 Z"/>
   <!-- building 3 warehouse -->
-  <path class="st" style="--d:1.4s" pathLength="100" d="M232 400 L234 286 L328 284 L330 400"/>
-  <path class="st thin" style="--d:1.5s" pathLength="100" d="M234 286 L280 272 L328 284"/>
-  <path class="st thin" style="--d:1.6s" pathLength="100" d="M262 400 L263 330 L300 331 L301 400"/>
-  <path class="st thin" style="--d:1.7s" pathLength="100" d="M248 305 h12 v12 h-12 Z"/>
-  <path class="st thin" style="--d:1.75s" pathLength="100" d="M286 303 h12 v12 h-12 Z"/>
+  <path class="st" style="--d:1.5s" pathLength="100" d="M232 600 L234 460 L328 458 L330 600"/>
+  <path class="st thin" style="--d:1.6s" pathLength="100" d="M234 460 L280 446 L328 458"/>
+  <path class="st thin" style="--d:1.7s" pathLength="100" d="M262 600 L263 520 L300 521 L301 600"/>
+  <path class="st thin" style="--d:1.8s" pathLength="100" d="M248 485 h12 v14 h-12 Z"/>
+  <path class="st thin" style="--d:1.85s" pathLength="100" d="M286 483 h12 v14 h-12 Z"/>
   <!-- port crane 1 -->
-  <path class="st" style="--d:1.9s" pathLength="100" d="M380 400 L382 240"/>
-  <path class="st" style="--d:1.95s" pathLength="100" d="M430 400 L432 240"/>
-  <path class="st thin" style="--d:2s" pathLength="100" d="M381 340 L431 338"/>
-  <path class="st thin" style="--d:2.05s" pathLength="100" d="M381 290 L431 292"/>
-  <path class="st" style="--d:2.1s" pathLength="100" d="M350 238 L480 234"/>
-  <path class="st thin" style="--d:2.15s" pathLength="100" d="M382 240 L406 208 L432 238"/>
-  <path class="st thin" style="--d:2.2s" pathLength="100" d="M406 208 L350 238"/>
-  <path class="st thin" style="--d:2.25s" pathLength="100" d="M406 208 L480 234"/>
-  <path class="st thin" style="--d:2.3s" pathLength="100" d="M460 236 L460 285"/>
-  <path class="st thin" style="--d:2.35s" pathLength="100" d="M455 285 q5 8 10 0"/>
-  <path class="st thin" style="--d:2.4s" pathLength="100" d="M440 400 L441 372 L481 371 L482 399 Z"/>
+  <path class="st" style="--d:2s" pathLength="100" d="M380 600 L382 400"/>
+  <path class="st" style="--d:2.05s" pathLength="100" d="M430 600 L432 400"/>
+  <path class="st thin" style="--d:2.1s" pathLength="100" d="M381 540 L431 538"/>
+  <path class="st thin" style="--d:2.15s" pathLength="100" d="M381 470 L431 472"/>
+  <path class="st" style="--d:2.2s" pathLength="100" d="M350 398 L480 394"/>
+  <path class="st thin" style="--d:2.25s" pathLength="100" d="M382 400 L406 355 L432 398"/>
+  <path class="st thin" style="--d:2.3s" pathLength="100" d="M406 355 L350 398"/>
+  <path class="st thin" style="--d:2.35s" pathLength="100" d="M406 355 L480 394"/>
+  <path class="st thin" style="--d:2.4s" pathLength="100" d="M460 396 L460 470"/>
+  <path class="st thin" style="--d:2.45s" pathLength="100" d="M455 470 q5 10 10 0"/>
+  <path class="st thin" style="--d:2.5s" pathLength="100" d="M440 600 L441 550 L481 549 L482 599 Z"/>
   <!-- port crane 2 -->
-  <path class="st" style="--d:2.5s" pathLength="100" d="M520 400 L522 250"/>
-  <path class="st" style="--d:2.55s" pathLength="100" d="M570 400 L572 250"/>
-  <path class="st thin" style="--d:2.6s" pathLength="100" d="M521 340 L571 342"/>
-  <path class="st thin" style="--d:2.65s" pathLength="100" d="M521 300 L571 298"/>
-  <path class="st" style="--d:2.7s" pathLength="100" d="M490 248 L620 244"/>
-  <path class="st thin" style="--d:2.75s" pathLength="100" d="M522 250 L546 216 L572 248"/>
-  <path class="st thin" style="--d:2.8s" pathLength="100" d="M546 216 L490 248"/>
-  <path class="st thin" style="--d:2.85s" pathLength="100" d="M546 216 L620 244"/>
-  <path class="st thin" style="--d:2.9s" pathLength="100" d="M600 246 L600 300"/>
-  <path class="st thin" style="--d:2.95s" pathLength="100" d="M595 300 q5 8 10 0"/>
+  <path class="st" style="--d:2.6s" pathLength="100" d="M520 600 L522 410"/>
+  <path class="st" style="--d:2.65s" pathLength="100" d="M570 600 L572 410"/>
+  <path class="st thin" style="--d:2.7s" pathLength="100" d="M521 540 L571 542"/>
+  <path class="st thin" style="--d:2.75s" pathLength="100" d="M521 480 L571 478"/>
+  <path class="st" style="--d:2.8s" pathLength="100" d="M490 408 L620 404"/>
+  <path class="st thin" style="--d:2.85s" pathLength="100" d="M522 410 L546 365 L572 408"/>
+  <path class="st thin" style="--d:2.9s" pathLength="100" d="M546 365 L490 408"/>
+  <path class="st thin" style="--d:2.95s" pathLength="100" d="M546 365 L620 404"/>
+  <path class="st thin" style="--d:3s" pathLength="100" d="M600 406 L600 490"/>
+  <path class="st thin" style="--d:3.05s" pathLength="100" d="M595 490 q5 10 10 0"/>
   <!-- building 4 with water tank -->
-  <path class="st" style="--d:3s" pathLength="100" d="M650 400 L652 236 L728 234 L730 400"/>
-  <path class="st thin" style="--d:3.1s" pathLength="100" d="M676 234 L676 210 Q676 202 684 202 Q692 202 692 210 L692 234"/>
-  <path class="st thin" style="--d:3.15s" pathLength="100" d="M672 234 L668 224 M696 234 L700 224"/>
-  <path class="st thin" style="--d:3.2s" pathLength="100" d="M664 270 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:3.25s" pathLength="100" d="M696 270 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:3.3s" pathLength="100" d="M664 310 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:3.35s" pathLength="100" d="M696 310 h14 v14 h-14 Z"/>
+  <path class="st" style="--d:3.15s" pathLength="100" d="M650 600 L652 400 L728 398 L730 600"/>
+  <path class="st thin" style="--d:3.25s" pathLength="100" d="M676 398 L676 360 Q676 350 684 350 Q692 350 692 360 L692 398"/>
+  <path class="st thin" style="--d:3.3s" pathLength="100" d="M672 398 L668 384 M696 398 L700 384"/>
+  <path class="st thin" style="--d:3.35s" pathLength="100" d="M664 440 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:3.4s" pathLength="100" d="M696 440 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:3.45s" pathLength="100" d="M664 490 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:3.5s" pathLength="100" d="M696 490 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:3.55s" pathLength="100" d="M664 540 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:3.6s" pathLength="100" d="M696 540 h14 v16 h-14 Z"/>
   <!-- building 5 clock tower -->
-  <path class="st" style="--d:3.45s" pathLength="100" d="M750 400 L752 192 L828 190 L830 400"/>
-  <path class="st" style="--d:3.55s" pathLength="100" d="M752 192 L760 168 L820 166 L828 190"/>
-  <path class="st thin" style="--d:3.65s" pathLength="100" d="M798 186 a8 8 0 1 0 -16 0 a8 8 0 1 0 16 0"/>
-  <path class="st thin" style="--d:3.7s" pathLength="100" d="M790 186 L790 181 M790 186 L794 186"/>
-  <path class="st thin" style="--d:3.75s" pathLength="100" d="M790 166 L789 138"/>
-  <path class="st thin" style="--d:3.8s" pathLength="100" d="M766 240 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:3.85s" pathLength="100" d="M806 240 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:3.9s" pathLength="100" d="M766 290 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:3.95s" pathLength="100" d="M806 290 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:4s" pathLength="100" d="M766 340 h14 v14 h-14 Z"/>
-  <path class="st thin" style="--d:4.05s" pathLength="100" d="M806 340 h14 v14 h-14 Z"/>
+  <path class="st" style="--d:3.7s" pathLength="100" d="M750 600 L752 330 L828 328 L830 600"/>
+  <path class="st" style="--d:3.8s" pathLength="100" d="M752 330 L760 295 L820 293 L828 328"/>
+  <path class="st thin" style="--d:3.9s" pathLength="100" d="M798 316 a10 10 0 1 0 -20 0 a10 10 0 1 0 20 0"/>
+  <path class="st thin" style="--d:3.95s" pathLength="100" d="M788 316 L788 309 M788 316 L795 316"/>
+  <path class="st thin" style="--d:4s" pathLength="100" d="M790 293 L789 250"/>
+  <path class="st thin" style="--d:4.05s" pathLength="100" d="M766 390 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:4.1s" pathLength="100" d="M806 390 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:4.15s" pathLength="100" d="M766 450 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:4.2s" pathLength="100" d="M806 450 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:4.25s" pathLength="100" d="M766 510 h14 v16 h-14 Z"/>
+  <path class="st thin" style="--d:4.3s" pathLength="100" d="M806 510 h14 v16 h-14 Z"/>
   <!-- building 6 -->
-  <path class="st" style="--d:4.1s" pathLength="100" d="M855 400 L857 276 L923 274 L925 400"/>
-  <path class="st thin" style="--d:4.15s" pathLength="100" d="M872 300 h12 v12 h-12 Z"/>
-  <path class="st thin" style="--d:4.2s" pathLength="100" d="M896 300 h12 v12 h-12 Z"/>
-  <path class="st thin" style="--d:4.25s" pathLength="100" d="M872 340 h12 v12 h-12 Z"/>
-  <path class="st thin" style="--d:4.3s" pathLength="100" d="M896 340 h12 v12 h-12 Z"/>
+  <path class="st" style="--d:4.4s" pathLength="100" d="M855 600 L857 460 L923 458 L925 600"/>
+  <path class="st thin" style="--d:4.45s" pathLength="100" d="M872 490 h12 v14 h-12 Z"/>
+  <path class="st thin" style="--d:4.5s" pathLength="100" d="M896 490 h12 v14 h-12 Z"/>
+  <path class="st thin" style="--d:4.55s" pathLength="100" d="M872 540 h12 v14 h-12 Z"/>
+  <path class="st thin" style="--d:4.6s" pathLength="100" d="M896 540 h12 v14 h-12 Z"/>
   <!-- bay bridge tower -->
-  <path class="st" style="--d:4.35s" pathLength="100" d="M965 400 L967 190"/>
-  <path class="st" style="--d:4.4s" pathLength="100" d="M1003 400 L1005 190"/>
-  <path class="st thin" style="--d:4.45s" pathLength="100" d="M966 350 L1004 348"/>
-  <path class="st thin" style="--d:4.5s" pathLength="100" d="M966 300 L1004 302"/>
-  <path class="st thin" style="--d:4.55s" pathLength="100" d="M966 250 L1004 248"/>
-  <path class="st" style="--d:4.6s" pathLength="100" d="M963 190 L1007 188"/>
-  <path class="st thin" style="--d:4.65s" pathLength="100" d="M965 192 Q 890 300 815 330"/>
-  <path class="st thin" style="--d:4.7s" pathLength="100" d="M1005 190 Q 1080 298 1155 328"/>
-  <path class="st" style="--d:4.75s" pathLength="100" d="M805 332 L1160 330"/>
-  <path class="st thin" style="--d:4.8s" pathLength="100" d="M880 332 L880 352 M1120 330 L1120 350"/>
+  <path class="st" style="--d:4.7s" pathLength="100" d="M965 600 L967 280"/>
+  <path class="st" style="--d:4.75s" pathLength="100" d="M1003 600 L1005 280"/>
+  <path class="st thin" style="--d:4.8s" pathLength="100" d="M966 540 L1004 538"/>
+  <path class="st thin" style="--d:4.85s" pathLength="100" d="M966 460 L1004 462"/>
+  <path class="st thin" style="--d:4.9s" pathLength="100" d="M966 380 L1004 378"/>
+  <path class="st" style="--d:4.95s" pathLength="100" d="M963 280 L1007 278"/>
+  <path class="st thin" style="--d:5s" pathLength="100" d="M965 282 Q 890 440 815 500"/>
+  <path class="st thin" style="--d:5.05s" pathLength="100" d="M1005 280 Q 1080 438 1155 498"/>
+  <path class="st" style="--d:5.1s" pathLength="100" d="M805 505 L1160 503"/>
+  <path class="st thin" style="--d:5.15s" pathLength="100" d="M880 505 L880 535 M1120 503 L1120 533"/>
   <!-- water -->
-  <path class="st thin" style="--d:4.85s" pathLength="100" d="M0 402 C 200 398, 500 404, 800 400 C 950 398, 1100 402, 1200 400"/>
-  <path class="st thin" style="--d:4.95s" pathLength="100" d="M60 412 C 300 408, 700 414, 1140 410"/>
+  <path class="st thin" style="--d:5.2s" pathLength="100" d="M0 602 C 200 598, 500 604, 800 600 C 950 598, 1100 602, 1200 600"/>
+  <path class="st thin" style="--d:5.3s" pathLength="100" d="M60 612 C 300 608, 700 614, 1140 610"/>
   <!-- moon (red pen) -->
-  <path class="st red" style="--d:5.1s" pathLength="100" d="M1048 84 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0"/>
-  <path class="st thin red" style="--d:5.2s" pathLength="100" d="M1058 74 a5 5 0 1 0 .1 0"/>
-  <path class="st thin red" style="--d:5.25s" pathLength="100" d="M1070 92 a4 4 0 1 0 .1 0"/>
+  <path class="st red" style="--d:5.45s" pathLength="100" d="M940 120 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0"/>
+  <path class="st thin red" style="--d:5.55s" pathLength="100" d="M950 110 a5 5 0 1 0 .1 0"/>
+  <path class="st thin red" style="--d:5.6s" pathLength="100" d="M962 128 a4 4 0 1 0 .1 0"/>
   <!-- stars -->
-  <path class="st thin" style="--d:5.3s" pathLength="100" d="M180 120 v14 M173 127 h14"/>
-  <path class="st thin" style="--d:5.4s" pathLength="100" d="M420 90 v10 M415 95 h10"/>
-  <path class="st thin" style="--d:5.5s" pathLength="100" d="M700 110 v12 M694 116 h12"/>
-  <path class="st thin" style="--d:5.55s" pathLength="100" d="M950 70 v10 M945 75 h10"/>
+  <path class="st thin" style="--d:5.65s" pathLength="100" d="M180 150 v14 M173 157 h14"/>
+  <path class="st thin" style="--d:5.7s" pathLength="100" d="M420 100 v10 M415 105 h10"/>
+  <path class="st thin" style="--d:5.75s" pathLength="100" d="M620 130 v12 M614 136 h12"/>
+  <path class="st thin" style="--d:5.8s" pathLength="100" d="M560 60 v10 M555 65 h10"/>
 </svg>
 </template>
 
